@@ -52,21 +52,20 @@
         <div class="header-text caption">
           <h2>Choose your destination</h2>
           <div id="search-section">
-            <form id="suggestion_form">
+            <form id="suggestion_form" (ngSubmit)="onSubmit()">
               <div class="searchText searchArea">
                 <input
-                  type="text"
-                  name="q"
+                  type="search"
                   class="searchText"
                   placeholder="Enter Your Travel Destination..."
-                  autocomplete="on"
+                  id="query"
+                  name="query"
+                  [(ngModel)]="query"
                 />
          
                 <button
                   type="submit"
-                  name="results"
                   class="main-button"
-                  value="Search Now"
                 >
                   Search Now
                 </button>
@@ -76,6 +75,7 @@
         </div>
       </div>
     </div>
+    {{query}}
     <!-- Banner Ends Here -->
 
     <!-- Footer -->
