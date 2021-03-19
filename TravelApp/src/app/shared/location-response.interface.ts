@@ -26,3 +26,10 @@ export interface ISuggestionItem{
     longitude:number;
     name:string;
 }
+
+export interface IQuery{
+    query:string;
+    checkIn:string;
+    checkOut:string;
+    adults1?:number;
+}

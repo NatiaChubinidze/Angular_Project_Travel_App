@@ -1,0 +1,13 @@
+.container{
+    min-height:200px;
+    background-color: rgb(59, 149, 185);
+}
+.cardsContainer{
+    flex-wrap:wrap;
+    justify-content: space-between;
+}
+
+.card{
+    width:32%;
+    margin-bottom:20px;
+}

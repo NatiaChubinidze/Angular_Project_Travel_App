@@ -1,0 +1,16 @@
+<div class="container">
+  <h1 class="text-center mb-4">{{ destination | capitalize}} Landmarks</h1>
+  <div class="cardContainer d-flex">
+    <div
+      class="card text-dark bg-light mb-3"
+      *ngFor="let landmark of landmarks"
+    >
+      <div class="card-header">{{ landmark.name }}</div>
+      <div class="card-body">
+        <h5 class="card-title">{{ landmark.name }}</h5>
+        <p class="card-text" [innerHTML]="landmark.caption | htmldecoder"></p>
+        
+      </div>
+    </div>
+  </div>
+</div>
