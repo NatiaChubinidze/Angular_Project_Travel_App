@@ -6,20 +6,53 @@
         <div class="header-text caption">
           <h2>Choose your destination</h2>
           <div id="search-section">
-            <form id="suggestion_form" (ngSubmit)="onSubmit()">
+            <form id="suggestion_form">
               <div class="searchText searchArea">
                 <input
                   type="search"
                   class="searchText"
-                  placeholder="Enter Your Travel Destination..."
+                  placeholder=" Travel Destination"
                   id="query"
                   name="query"
-                  [(ngModel)]="query"
+                  required
+                  [(ngModel)]="queryData.query"
                 />
+                <input
+                  type="text"
+                  class="searchText"
+                  onfocus="(this.type='date')"
+                  placeholder="Check In Date"
+                  id="checkIn"
+                  name="checkIn"
+                  required
+                  [(ngModel)]="queryData.checkIn"
+                />
+                <input
+                  type="text"
+                  class="searchText"
+                  onfocus="(this.type='date')"
+                  placeholder="Check Out Date"
+                  id="checkOut"
+                  name="checkOut"
+                  required
+                  [(ngModel)]="queryData.checkOut"
+                />
+                <input
+                  type="text"
+                  class="searchText"
+                  onfocus="(this.type='number')"
+                  placeholder="Number of Adults"
+                  id="adults1"
+                  name="adults1"
+                  required
+                  [(ngModel)]="queryData.adults1"
+                />
+                <br>
          
                 <button
                   type="submit"
                   class="main-button"
+                  [routerLink]="['/destination',queryData.query,queryData.checkIn,queryData.checkOut,queryData.adults1]"
                 >
                   Search Now
                 </button>
@@ -29,7 +62,7 @@
         </div>
       </div>
     </div>
-    {{query}}
+    {{queryData |json}}
     <!-- Banner Ends Here -->
 
     

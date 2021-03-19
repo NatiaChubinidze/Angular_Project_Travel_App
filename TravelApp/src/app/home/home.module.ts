@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {RouterModule} from '@angular/router';
@@ -35,7 +35,8 @@ import { HeaderInterceptorService } from './add.header.interceptor.service';
     provide:HTTP_INTERCEPTORS,
     useClass:HeaderInterceptorService,
     multi:true
-  }],
+  },DatePipe
+],
   exports:[HomeComponent]
 })
 export class HomeModule { }

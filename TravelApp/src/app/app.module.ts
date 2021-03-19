@@ -9,6 +9,8 @@ import { HeaderComponent } from './header/header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthModule } from './auth/auth.module';
 
+import { DestinationModule } from './destination/destination.module';
+
 
 @NgModule({
   declarations: [
@@ -17,17 +19,20 @@ import { AuthModule } from './auth/auth.module';
     HeaderComponent,
    
    
+   
   ],
   imports: [
     BrowserModule,
     HomeModule,
     AuthModule,
+    DestinationModule,
     RouterModule.forRoot([
       {
         path: '**',
         component: PageNotFoundComponent,
       },
     ]),
+    DestinationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
