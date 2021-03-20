@@ -2,10 +2,12 @@
     <h1 class="text-center">{{ destination | capitalize }} Hotels</h1>
     <div class="d-flex cardContainer">
     <div class="card border-warning mb-3" *ngFor="let hotel of hotelsArray">
-        <div class="card-header">{{hotel.type}}</div>
+      <img *ngIf="hotel.thumbnailUrl" [src]="hotel.thumbnailUrl" class="card-img-top" 
+      alt="Hotel Thumbnail"/>
+        <div class="card-header">{{hotel.address.streetAddress}}, {{hotel.address.locality}}</div>
         <div class="card-body">
           <h5 class="card-title">{{hotel.name}}</h5>
-          <p class="card-text" [innerHTML]="hotel.caption | htmldecoder"></p>
+          <p class="card-text">Star Rating: {{hotel.starRating}}</p>
         </div>
       </div>
       </div>

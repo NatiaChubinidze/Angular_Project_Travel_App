@@ -11,7 +11,7 @@ export interface IDataInterface{
 export interface IBodyInterface{
 header:string;
 query:IQueryInterface;
-searchResults:ISearchResultsInterface;
+searchResults:ISearchResults;
 sortResults:{
     options:IOptions[];
     distanceOptionLandmarkId:number;
@@ -138,9 +138,9 @@ export interface IDestinationInterface{
     resolvedLocation:string;
 }
 
-export interface ISearchResultsInterface{
+export interface ISearchResults{
     totalCount:number;
-    results:IResultInterface;
+    results:IResultInterface[];
     pagination:IPagination;
 }
 
@@ -154,37 +154,38 @@ export interface IPagination{
 export interface IResultInterface{
     id:number;
     name:string;
-    thumbnailUrl:string;
-    starRating:number;
-    address:IAddressInterface
-    welcomeRewards:{
+    thumbnailUrl?:string;
+    starRating?:number;
+    urls?;
+    address?:IAddressInterface
+    welcomeRewards?:{
         collect:boolean;
     }
-    guestReviews:IGuestReviewsInterface;
-    tripAdvisorGuestReviews:{
+    guestReviews?:IGuestReviewsInterface;
+    tripAdvisorGuestReviews?:{
         rating:number;
         total:number;
     }
-    landmarks:ILandmarksInterface[];
-    ratePlan:IRatePlanInterface;
-    neighbourhood:string;
-    deals:{
+    landmarks?:ILandmarksInterface[];
+    ratePlan?:IRatePlanInterface;
+    neighbourhood?:string;
+    deals?:{
         greatRate:boolean;
         priceReasoning:string;
     };
-    messaging:{
+    messaging?:{
         scarcity:string
     };
-    badging;
-    pimmsAttributes:string;
-    coupon:string;
-    coordinate:{
+    badging?;
+    pimmsAttributes?:string;
+    coupon?:string;
+    coordinate?:{
         lat:number;
         lon:number;
     }
-    roomsLeft:number;
-    providerType:string;
-    supplierHotelId:number;
+    roomsLeft?:number;
+    providerType?:string;
+    supplierHotelId?:number;
 }
 
 export interface IRatePlanInterface{

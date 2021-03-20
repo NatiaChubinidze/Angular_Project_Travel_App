@@ -7,6 +7,7 @@ import {
 } from '../shared/interfaces/location-response.interface';
 import { LocationService } from '../shared/services/location.service';
 import { DatePipe } from '@angular/common';
+import { IItems, IPropertiesResponse, IResultInterface } from '../shared/interfaces/properties-list-response.interface';
 @Component({
   selector: 'app-destination',
   templateUrl: './destination.component.html',
@@ -20,10 +21,10 @@ export class DestinationComponent implements OnInit {
   };
 
   citiesArray: ISuggestionItem[];
-  hotelsArray: ISuggestionItem[];
-  landmarksArray: ISuggestionItem[];
+  hotelsArray: IResultInterface[];
+  landmarksArray:IItems[];
   transportsArray: ISuggestionItem[];
-  cityId: string;
+  cityId: number;
 
   visibility = {
     landmarks: true,
@@ -52,6 +53,7 @@ export class DestinationComponent implements OnInit {
     this.queryData.adults1 =
       adultsNumber <= 0 || adultsNumber === undefined ? 1 : adultsNumber;
     this.getData();
+    
   }
 
   getData() {
@@ -60,24 +62,37 @@ export class DestinationComponent implements OnInit {
       .getDestinationData(this.queryData.query)
       .subscribe((data: ILocationResponse) => {
         data.suggestions.forEach((suggestion) => {
-          if (suggestion.group === 'LANDMARK_GROUP') {
-            this.landmarksArray = suggestion.entities;
-          } else if (suggestion.group === 'TRANSPORT_GROUP') {
+          if (suggestion.group === 'TRANSPORT_GROUP') {
             this.transportsArray = suggestion.entities;
-          } else if (suggestion.group === 'HOTEL_GROUP') {
-            this.hotelsArray = suggestion.entities;
-          } else {
+          } else if (suggestion.group === 'CITY_GROUP') {
             this.citiesArray = suggestion.entities;
+            console.log("cities array",this.citiesArray);
           }
+          
         });
 
         this.citiesArray.forEach((item) => {
           if (item.name.toLowerCase() === this.queryData.query.toLowerCase()) {
-            this.cityId = item.destinationId;
+            this.cityId = parseInt(item.destinationId);
+            
           }
         });
+        this.getPropertiesList();
       });
+      
   }
+
+  getPropertiesList(){
+    if(this.cityId){
+      console.log(this.cityId,"getting properties");
+      this.getLocation.getPropertiesList(this.cityId,this.queryData.checkIn,this.queryData.checkOut,this.queryData.adults1).subscribe((info:IPropertiesResponse)=>{
+        this.hotelsArray=info.data.body.searchResults.results;
+        console.log(info.data.body);
+        this.landmarksArray=info.data.body.filters.landmarks.items;
+      })
+    }
+  }
+
   toggleVisibility(event):void{
     if(event.target.nodeName==="BUTTON"){
     const toAppear = event.target.innerHTML.toLowerCase();
