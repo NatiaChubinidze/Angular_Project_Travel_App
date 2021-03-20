@@ -5,10 +5,10 @@
       class="card text-dark bg-light mb-3"
       *ngFor="let landmark of landmarks"
     >
-      <div class="card-header">{{ landmark.name }}</div>
+      <div class="card-header"></div>
       <div class="card-body">
-        <h5 class="card-title">{{ landmark.name }}</h5>
-        <p class="card-text" [innerHTML]="landmark.caption | htmldecoder"></p>
+        <h5 class="card-title">{{ landmark.label}}</h5>
+        <p class="card-text"></p>
         
       </div>
     </div>

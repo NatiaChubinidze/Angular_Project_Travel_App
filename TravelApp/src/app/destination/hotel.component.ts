@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ISuggestionItem } from '../shared/interfaces/location-response.interface';
 
+
 @Component({
   selector: 'app-hotel',
   templateUrl: './hotel.component.html',
@@ -12,6 +13,7 @@ export class HotelComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+   
   }
 
 }
