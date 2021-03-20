@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { ISuggestionItem } from '../shared/location-response.interface';
+import { ISuggestionItem } from '../shared/interfaces/location-response.interface';
 
 @Component({
   selector: 'app-landmarks',

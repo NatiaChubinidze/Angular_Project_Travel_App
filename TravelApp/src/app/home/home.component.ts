@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ILocationResponse, IQuery} from '../shared/location-response.interface';
+import { ILocationResponse, IQuery} from '../shared/interfaces/location-response.interface';
 
 
 @Component({
