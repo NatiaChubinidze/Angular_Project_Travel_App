@@ -19,7 +19,7 @@ export class HeaderInterceptorService implements HttpInterceptor {
     const clonedRequest = request.clone({
       method: 'GET',
       setHeaders: {
-        'x-rapidapi-key': '272fed8f58msh8e4b690dee67116p10ffe8jsn96b825cee07d',
+        'x-rapidapi-key': '218a3bc526msh45af1c5ed29b081p16aaeajsn2ee62334378d',
         'x-rapidapi-host': 'hotels4.p.rapidapi.com',
       },
     });

@@ -1,8 +1,10 @@
 <div class="container">
-    <h1 class="text-center">{{ destination | capitalize }} Hotels</h1>
+    <h1 class="text-center mb-4">{{ destination | capitalize }} Hotels</h1>
     <div class="d-flex cardContainer">
-    <div class="card border-warning mb-3" *ngFor="let hotel of hotelsArray">
-      <img *ngIf="hotel.thumbnailUrl" [src]="hotel.thumbnailUrl" class="card-img-top" 
+    <div class="card border-warning mb-3" *ngFor="let hotel of hotelArr" 
+    [routerLink]="['hotel-details', hotel.id]">
+    
+      <img src="https://image.flaticon.com/icons/png/128/508/508965.png" class="card-img-top" 
       alt="Hotel Thumbnail"/>
         <div class="card-header">{{hotel.address.streetAddress}}, {{hotel.address.locality}}</div>
         <div class="card-body">

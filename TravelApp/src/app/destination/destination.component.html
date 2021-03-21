@@ -13,6 +13,6 @@
 
 <app-landmarks *ngIf="visibility.landmarks" [landmarks]="landmarksArray" [destination]="queryData.query"></app-landmarks>
 <app-transport *ngIf="visibility.transport" [transportArray]="transportsArray" [destination]="queryData.query"></app-transport>
-<app-hotel *ngIf="visibility.hotels"[hotelsArray]="hotelsArray" [destination]="queryData.query"></app-hotel>
+<app-hotel *ngIf="visibility.hotels"[hotelsArray]="hotelsArray" [destination]="queryData.query" [queryData]="queryData"></app-hotel>
 </div>
 

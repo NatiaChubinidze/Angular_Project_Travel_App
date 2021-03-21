@@ -22,8 +22,53 @@ export class DestinationComponent implements OnInit {
 
   citiesArray: ISuggestionItem[];
   hotelsArray: IResultInterface[];
-  landmarksArray:IItems[];
-  transportsArray: ISuggestionItem[];
+ 
+  landmarksArray:IItems[]=[{
+    label:"sjhdjshdshjshd",
+    value:"kjdksjdsjkdjksj"
+  },{
+  label:"sjhdjshdshjshd",
+    value:"kjdksjdsjkdjksj"
+  },{
+  label:"sjhdjshdshjshd",
+    value:"kjdksjdsjkdjksj"
+  }];
+
+  transportsArray: ISuggestionItem[]=[
+    {
+      geoId:"1000000000000502103",
+  destinationId:"1634221",
+  landmarkCityDestinationId:"1506246",
+  type:"LANDMARK",
+  caption:"<span class='highlighted'>New</span> <span class='highlighted'>York</span> University, New York, New York, United States of America",
+  redirectPage:"DEFAULT_PAGE",
+  latitude:40.72984,
+  longitude:-73.99529,
+  name:"New York University",
+    },
+    {
+      geoId:"1000000000000502103",
+  destinationId:"1634221",
+  landmarkCityDestinationId:"1506246",
+  type:"LANDMARK",
+  caption:"<span class='highlighted'>New</span> <span class='highlighted'>York</span> University, New York, New York, United States of America",
+  redirectPage:"DEFAULT_PAGE",
+  latitude:40.72984,
+  longitude:-73.99529,
+  name:"New York University",
+    },{
+      geoId:"1000000000000502103",
+  destinationId:"1634221",
+  landmarkCityDestinationId:"1506246",
+  type:"LANDMARK",
+  caption:"<span class='highlighted'>New</span> <span class='highlighted'>York</span> University, New York, New York, United States of America",
+  redirectPage:"DEFAULT_PAGE",
+  latitude:40.72984,
+  longitude:-73.99529,
+  name:"New York University",
+    }
+  ];
+
   cityId: number;
 
   visibility = {
@@ -52,46 +97,48 @@ export class DestinationComponent implements OnInit {
     let adultsNumber = parseInt(this._router.snapshot.paramMap.get('adults1'));
     this.queryData.adults1 =
       adultsNumber <= 0 || adultsNumber === undefined ? 1 : adultsNumber;
-    this.getData();
+    // this.getData();
     
   }
 
-  getData() {
-    console.log('submiting and getting data');
-    this.getLocation
-      .getDestinationData(this.queryData.query)
-      .subscribe((data: ILocationResponse) => {
-        data.suggestions.forEach((suggestion) => {
-          if (suggestion.group === 'TRANSPORT_GROUP') {
-            this.transportsArray = suggestion.entities;
-          } else if (suggestion.group === 'CITY_GROUP') {
-            this.citiesArray = suggestion.entities;
-            console.log("cities array",this.citiesArray);
-          }
+  //getData() {
+    // console.log('submiting and getting data');
+    // this.getLocation
+    //   .getDestinationData(this.queryData.query)
+    //   .subscribe((data: ILocationResponse) => {
+    //     data.suggestions.forEach((suggestion) => {
+    //       if (suggestion.group === 'TRANSPORT_GROUP') {
+    //         this.transportsArray = suggestion.entities;
+    //       } else if (suggestion.group === 'CITY_GROUP') {
+    //         this.citiesArray = suggestion.entities;
+    //         console.log("cities array",this.citiesArray);
+    //       }
           
-        });
+    //     });
 
-        this.citiesArray.forEach((item) => {
-          if (item.name.toLowerCase() === this.queryData.query.toLowerCase()) {
-            this.cityId = parseInt(item.destinationId);
+    //     this.citiesArray.forEach((item) => {
+    //       if (item.name.toLowerCase() === this.queryData.query.toLowerCase()) {
+    //         this.cityId = parseInt(item.destinationId);
             
-          }
-        });
-        this.getPropertiesList();
-      });
+    //       }
+    //     });
+    //     this.getPropertiesList();
+    //   });
       
-  }
+  //}
 
-  getPropertiesList(){
-    if(this.cityId){
-      console.log(this.cityId,"getting properties");
-      this.getLocation.getPropertiesList(this.cityId,this.queryData.checkIn,this.queryData.checkOut,this.queryData.adults1).subscribe((info:IPropertiesResponse)=>{
-        this.hotelsArray=info.data.body.searchResults.results;
-        console.log(info.data.body);
-        this.landmarksArray=info.data.body.filters.landmarks.items;
-      })
-    }
-  }
+  // getPropertiesList(){
+  //   if(this.cityId){
+  //     console.log(this.cityId,"getting properties");
+  //     this.getLocation.getPropertiesList(this.cityId,this.queryData.checkIn,this.queryData.checkOut,this.queryData.adults1).subscribe((info:IPropertiesResponse)=>{
+  //       console.log(info);
+  //       this.hotelsArray=info.data.body.searchResults.results;
+  //       console.log(this.hotelsArray);
+  //       console.log(info.data.body);
+  //       this.landmarksArray=info.data.body.filters.landmarks.items;
+  //     })
+  //   }
+  // }
 
   toggleVisibility(event):void{
     if(event.target.nodeName==="BUTTON"){
