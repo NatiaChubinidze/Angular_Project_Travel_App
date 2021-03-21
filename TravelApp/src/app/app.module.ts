@@ -17,9 +17,6 @@ import { DestinationModule } from './destination/destination.module';
     AppComponent,
     FooterComponent,
     HeaderComponent,
-   
-   
-   
   ],
   imports: [
     BrowserModule,

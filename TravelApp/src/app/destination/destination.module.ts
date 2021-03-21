@@ -10,7 +10,8 @@ import {HtmldecoderPipe} from '../shared/pipes/html-decoder.pipe';
 import {capitalize} from '../shared/pipes/capitalize.pipe';
 import { HeaderInterceptorService } from '../shared/services/add.header.interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
+import {HttpCacheInterceptorService} from '../core/cache.interceptor';
 @NgModule({
   declarations: [
 
@@ -18,12 +19,17 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     TransportComponent,
     HotelComponent,
     DestinationComponent,
+    HotelDetailsComponent,
     HtmldecoderPipe,
     capitalize
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
+      {
+        path:'destination/:query/:checkIn/:checkOut/:adults1/hotel-details/:hotelId',
+        component:HotelDetailsComponent,
+      },
       {
         path:'destination/:query/:checkIn/:checkOut/:adults1',
         component:DestinationComponent,
@@ -33,6 +39,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   providers:[{
     provide:HTTP_INTERCEPTORS,
     useClass:HeaderInterceptorService,
+    multi:true
+  },
+  {
+    provide:HTTP_INTERCEPTORS,
+    useClass:HttpCacheInterceptorService,
     multi:true
   },DatePipe
 ]

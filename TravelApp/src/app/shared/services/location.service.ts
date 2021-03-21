@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Observer, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { ILocationResponse } from '../interfaces/location-response.interface';
 import { IPropertiesResponse } from '../interfaces/properties-list-response.interface';
+import { IDetailsResponse } from '../interfaces/hotel-details.interface';
+import { IPhotos } from '../interfaces/hotel-Images.interface';
+import { IReviewsResponse } from '../interfaces/reviews.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +30,21 @@ export class LocationService {
         `${this.baseUrl}/properties/list?destinationId=${destinationId}&pageNumber=1&checkIn=${checkIn}&checkOut=${checkOut}&pageSize=25&adults1=${adults1}&locale=en_US`
       )
       .pipe(tap((data) => {}, catchError(this.handleError)));
+  }
+
+  getDetailedInfo(hotelId:number,checkIn:string,checkOut:string,adults1:number):Observable<IDetailsResponse>{
+    return this.http.get<IDetailsResponse>(`${this.baseUrl}/properties/get-details?id=${hotelId}&locale=en_US&currency=USD&checkOut=${checkOut}&adults1=${adults1}&checkIn=${checkIn}`)
+    .pipe(tap((data) => {}, catchError(this.handleError)));
+  }
+
+  getPhotos(hotelId:number):Observable<IPhotos>{
+return this.http.get<IPhotos>(`${this.baseUrl}/properties/get-hotel-photos?id=${hotelId}`)
+.pipe(tap((data) => {}, catchError(this.handleError)));
+  }
+
+  getReviews(hotelId:number):Observable<IReviewsResponse>{
+    return this.http.get<IReviewsResponse>(`${this.baseUrl}/reviews/list?id=${hotelId}&page=1&loc=en_US`)
+    .pipe(tap((data) => {}, catchError(this.handleError)));
   }
 
   private handleError(error: HttpErrorResponse) {
