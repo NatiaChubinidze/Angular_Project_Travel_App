@@ -1,3 +1,4 @@
+<app-carousel></app-carousel>
 <div class="content hotel-details">
   <div class="container">
     <div class="row">
@@ -6,7 +7,7 @@
           <div class="media mt-0 m-b-30">
             <div class="media-body">
               <div class="card card-img">
-                <img [src]="hotelImg" class="card-img-top" alt="Hotel Image" />
+                <app-carousel [images]="images"></app-carousel>
                 <div class="card-body">
 
                   <div class="task-tags mt-4">
@@ -34,11 +35,12 @@
               </div>
             </div>
           </div>
-          <h4 class="m-b-20 text-cont mb-4">Description</h4>
-          <h5 *ngIf="dataArray?.propertyDescription?.featuredPrice">Pricing</h5>
-          <p class="text-muted">{{dataArray?.propertyDescription?.featuredPrice?.pricingTooltip}}. <span>{{dataArray?.propertyDescription?.featuredPrice?.priceInfo}}. </span><span *ngIf="dataArray?.propertyDescription?.featuredPrice?.currentPrice?.formatted">Current Price: {{dataArray?.propertyDescription?.featuredPrice?.currentPrice?.formatted}}.</span> <span *ngIf="dataArray?.propertyDescription?.featuredPrice.oldPrice"> Old Price: {{dataArray?.propertyDescription?.featuredPrice.oldPrice}} </span></p>
-          <h5 *ngIf="dataArray?.propertyDescription?.roomTypeNames">Room Types Available</h5>
-          <p class="text-muted" *ngFor="let item of dataArray?.propertyDescription?.roomTypeNames"> - {{item}}</p>
+          <h4 class="m-b-20 text-cont mb-4 ms-3">Description</h4>
+          <h5 *ngIf="dataArray?.propertyDescription?.featuredPrice" class="ms-3">Pricing</h5>
+          <p class="text-muted ms-3">{{dataArray?.propertyDescription?.featuredPrice?.pricingTooltip}}. <span>{{dataArray?.propertyDescription?.featuredPrice?.priceInfo}}. </span><span *ngIf="dataArray?.propertyDescription?.featuredPrice?.currentPrice?.formatted">Current Price: {{dataArray?.propertyDescription?.featuredPrice?.currentPrice?.formatted}}.</span> <span *ngIf="dataArray?.propertyDescription?.featuredPrice.oldPrice"> Old Price: {{dataArray?.propertyDescription?.featuredPrice.oldPrice}} </span></p>
+          <h5 *ngIf="dataArray?.propertyDescription?.roomTypeNames" class="ms-3">Room Types Available</h5>
+          <p class="text-muted ms-3" *ngFor="let item of dataArray?.propertyDescription?.roomTypeNames"> - {{item}}</p>
+          <p *ngIf="dataArray?.roomsAndRates?.bookingUrl" class="ms-3"><b>Booking URL: {{dataArray?.roomsAndRates?.bookingUrl}}</b> <img class="bookingLink" src="https://image.flaticon.com/icons/png/128/126/126481.png"></p>
           <div class="clearfix"></div>
           </div>
         </div>
