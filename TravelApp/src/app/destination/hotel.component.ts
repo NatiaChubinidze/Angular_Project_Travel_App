@@ -11,29 +11,8 @@ export class HotelComponent implements OnInit {
 @Input() hotelsArray:ISuggestionItem[];
 @Input() destination:string;
 @Input() queryData: IQuery;
-hotelId:number;
+ hotelId:number;
 
-hotelArr=[{thumbnailUrl:"https://image.flaticon.com/icons/png/128/3754/3754197.png",
-address:{
-  streetAddress:"jskdjksjdksjkd",
-  locality:"skdjksjdksjd"
-},
-name:"hotel motels hostel",
-starRating:5},
-{
-address:{
-  streetAddress:"jskdjksjdksjkd",
-  locality:"skdjksjdksjd"
-},
-name:"hotel motels hostel",
-starRating:5},
-{
-address:{
-  streetAddress:"jskdjksjdksjkd",
-  locality:"skdjksjdksjd"
-},
-name:"hotel motels hostel",
-starRating:5}]
   constructor() { }
 
   ngOnInit(): void {

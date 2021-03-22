@@ -22,7 +22,7 @@ export class HotelDetailsComponent implements OnInit {
     checkOut: '',
   };
   hotelId: number;
-  hotelImg: string;
+  images:string[];
   dataArray?: IBody;
   transportsArray?: ITransportLocation[];
   reviewsArray?:IReview[];
@@ -33,13 +33,13 @@ export class HotelDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.queryData.query = this._route.snapshot.paramMap.get('query');
-    // this.queryData.checkIn = this._route.snapshot.paramMap.get('checkIn');
-    // this.queryData.checkOut = this._route.snapshot.paramMap.get('checkOut');
-    // this.queryData.adults1 = parseInt(
-    //   this._route.snapshot.paramMap.get('adults1')
-    // );
-    // this.hotelId = parseInt(this._route.snapshot.paramMap.get('hotelId'));
+    this.queryData.query = this._route.snapshot.paramMap.get('query');
+    this.queryData.checkIn = this._route.snapshot.paramMap.get('checkIn');
+    this.queryData.checkOut = this._route.snapshot.paramMap.get('checkOut');
+    this.queryData.adults1 = parseInt(
+      this._route.snapshot.paramMap.get('adults1')
+    );
+    this.hotelId = parseInt(this._route.snapshot.paramMap.get('hotelId'));
     // this.locationService
     //   .getDetailedInfo(
     //     this.hotelId,
@@ -57,14 +57,14 @@ export class HotelDetailsComponent implements OnInit {
     //     this.locationService
     //       .getPhotos(this.hotelId)
     //       .subscribe((photos: IPhotos) => {
-    //         const imageUrl = photos.hotelImages[0].baseUrl;
-    //         this.hotelImg = imageUrl
-    //           .substring(0, imageUrl.length - 11)
-    //           .concat(imageUrl.substring(imageUrl.length - 4));
+    //          const arr = photos.hotelImages.slice(0,8);
+    //          this.images=arr.map(photo=>{ return photo.baseUrl.substring(0, photo.baseUrl.length - 11)
+    //          .concat(photo.baseUrl.substring(photo.baseUrl.length - 4));})
+            
     //           this.locationService.getReviews(this.hotelId).subscribe((reviews:IReviewsResponse)=>{
     //             this.reviewsArray=reviews.reviewData.guestReviewGroups.guestReviews[0].reviews;
     //           })
     //       });
-    //   });
+      //});
   }
 }

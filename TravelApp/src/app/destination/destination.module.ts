@@ -12,6 +12,8 @@ import { HeaderInterceptorService } from '../shared/services/add.header.intercep
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 import {HttpCacheInterceptorService} from '../core/cache.interceptor';
+import {CarouselBasicModule} from '../shared/components/carousel.module';
+
 @NgModule({
   declarations: [
 
@@ -25,6 +27,7 @@ import {HttpCacheInterceptorService} from '../core/cache.interceptor';
   ],
   imports: [
     CommonModule,
+    CarouselBasicModule,
     RouterModule.forChild([
       {
         path:'destination/:query/:checkIn/:checkOut/:adults1/hotel-details/:hotelId',
