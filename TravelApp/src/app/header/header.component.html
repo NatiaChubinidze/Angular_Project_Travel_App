@@ -28,7 +28,7 @@
             </div>
             <div class="functional-buttons">
               <ul>
-                <li><a [routerLink]="['/signIn']">Log Out</a></li>
+                <li><a *ngIf="logOutVisibility" (click)="logOut()" class="logOut">Log Out</a></li>
                 <li></li>
               </ul>
             </div>

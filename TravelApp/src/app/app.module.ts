@@ -28,7 +28,7 @@ import { DestinationModule } from './destination/destination.module';
         component: PageNotFoundComponent,
       },
     ]),
-    DestinationModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

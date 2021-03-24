@@ -18,7 +18,8 @@ import {HttpCacheService} from '../core/cache.service';
 export class HttpCacheInterceptorService implements HttpInterceptor{
     constructor(private _cacheService:HttpCacheService){}
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if(req.method!=="GET"){
+
+        if(req.method!=="GET" || req.url.includes("reqres")){
             return next.handle(req);
         }
         const cachedResponse:HttpResponse<any> |undefined=this._cacheService.get(req.url);

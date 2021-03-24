@@ -40,31 +40,31 @@ export class HotelDetailsComponent implements OnInit {
       this._route.snapshot.paramMap.get('adults1')
     );
     this.hotelId = parseInt(this._route.snapshot.paramMap.get('hotelId'));
-    // this.locationService
-    //   .getDetailedInfo(
-    //     this.hotelId,
-    //     this.queryData.checkIn,
-    //     this.queryData.checkOut,
-    //     this.queryData.adults1
-    //   )
-    //   .subscribe((data: IDetailsResponse) => {
-    //     this.dataArray = data.data.body;
-    //     console.log(this.dataArray.propertyDescription.featuredPrice.oldPrice);
-    //     console.log(this.hotelId);
-    //     console.log(this.dataArray);
-    //     this.transportsArray = data.transportation.transportLocations;
-    //     this.neighborhood = data.neighborhood.neighborhoodName;
-    //     this.locationService
-    //       .getPhotos(this.hotelId)
-    //       .subscribe((photos: IPhotos) => {
-    //          const arr = photos.hotelImages.slice(0,8);
-    //          this.images=arr.map(photo=>{ return photo.baseUrl.substring(0, photo.baseUrl.length - 11)
-    //          .concat(photo.baseUrl.substring(photo.baseUrl.length - 4));})
+    this.locationService
+      .getDetailedInfo(
+        this.hotelId,
+        this.queryData.checkIn,
+        this.queryData.checkOut,
+        this.queryData.adults1
+      )
+      .subscribe((data: IDetailsResponse) => {
+        this.dataArray = data.data.body;
+        console.log(this.dataArray.propertyDescription.featuredPrice.oldPrice);
+        console.log(this.hotelId);
+        console.log(this.dataArray);
+        this.transportsArray = data.transportation.transportLocations;
+        this.neighborhood = data.neighborhood.neighborhoodName;
+        this.locationService
+          .getPhotos(this.hotelId)
+          .subscribe((photos: IPhotos) => {
+             const arr = photos.hotelImages.slice(0,8);
+             this.images=arr.map(photo=>{ return photo.baseUrl.substring(0, photo.baseUrl.length - 11)
+             .concat(photo.baseUrl.substring(photo.baseUrl.length - 4));})
             
-    //           this.locationService.getReviews(this.hotelId).subscribe((reviews:IReviewsResponse)=>{
-    //             this.reviewsArray=reviews.reviewData.guestReviewGroups.guestReviews[0].reviews;
-    //           })
-    //       });
-      //});
+              this.locationService.getReviews(this.hotelId).subscribe((reviews:IReviewsResponse)=>{
+                this.reviewsArray=reviews.reviewData.guestReviewGroups.guestReviews[0].reviews;
+              })
+          });
+      });
   }
 }

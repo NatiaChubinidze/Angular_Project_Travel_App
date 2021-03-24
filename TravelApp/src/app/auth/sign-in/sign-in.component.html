@@ -3,8 +3,8 @@
     <div class="body">
     <div class="container">
       <div class="row">
-        <div class="col-md-offset-5 col-md-4">
-          <h1 class="text-white ms-3">Please, Sign in</h1>
+        <div class="col-md-offset-5 col-md-4 loginCont">
+          <h1 class="text-white ms-3 text-center">Please, Sign in</h1>
           <div class="form-login">
             <h4>Secure Login</h4>
 
@@ -34,9 +34,10 @@
                   class="btn login btn-md mt-3"
                   (click)="authorize()"
                 >
-                  login <i class="fa fa-sign-in"></i>
+                  login 
                 </button>
               </span>
+              <p class="mt-3 mb-1">Not Registered? Sign up</p><a [routerLink]="['/signUp']" class="signUp">Here</a>
             </div>
 
           </div>
