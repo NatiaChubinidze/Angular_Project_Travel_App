@@ -21,7 +21,7 @@
   }
   .form-login {
     width:90%;
-    background-color:rgba(55, 71, 105, 0.8);
+    background-color:rgba(148, 84, 85, 0.5);
     padding-top: 10px;
     padding-bottom: 20px;
     padding-left: 20px;
@@ -65,4 +65,17 @@
 
   .login{
     background-color:white;
+    width:70px;
+  }
+
+  a.signUp{
+    margin-top:0px;
+  }
+
+  .loginCont{
+    width:400px;
+  }
+
+  h1{
+    width:300px;
   }

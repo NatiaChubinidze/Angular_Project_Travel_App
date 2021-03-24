@@ -53,7 +53,7 @@ export class DestinationComponent implements OnInit {
     let adultsNumber = parseInt(this._router.snapshot.paramMap.get('adults1'));
     this.queryData.adults1 =
       adultsNumber <= 0 || adultsNumber === undefined ? 1 : adultsNumber;
-   //this.getData();
+   this.getData();
     
   }
 
@@ -78,7 +78,7 @@ export class DestinationComponent implements OnInit {
             
           }
         });
-        //this.getPropertiesList();
+        this.getPropertiesList();
       });
       
   }

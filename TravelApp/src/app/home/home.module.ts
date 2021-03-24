@@ -23,11 +23,6 @@ import {HttpCacheInterceptorService} from '../core/cache.interceptor';
       {
         path:'home',
         component:HomeComponent,
-      },
-      {
-        path:'',
-        redirectTo:'home',
-        pathMatch:'full',
       }
     ])
   ],
