@@ -1,0 +1,51 @@
+<p>sign-out works!</p>
+
+    <!-- Page Content -->
+    <div class="body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-offset-5 col-md-4 loginCont">
+              <h1 class="text-white ms-3">Please, Sign Up</h1>
+              <div class="form-login">
+                <h4>Your Credentials</h4>
+    
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  class="form-control input-sm chat-input"
+                  placeholder="username"
+                  value="eve.holt@reqres.in"
+                  [(ngModel)]="userInfo.email"
+                />
+    
+                <input
+                  type="text"
+                  id="password"
+                  name="password"
+                  class="form-control input-sm chat-input"
+                  placeholder="password"
+                  value="cityslicka"
+                  [(ngModel)]="userInfo.password"
+                />
+    
+                <div class="wrapper">
+                  <span class="group-btn">
+                    <button
+                      class="btn signUp btn-md mt-3"
+                      (click)="authorize()"
+                    >
+                      Sign Up 
+                    </button>
+                  </span>
+                  <p class="mt-3 mb-1">Already Registered? Sign In</p><a [routerLink]="['/signIn']" class="signIn">Here</a>
+                </div>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+    
+    
+    

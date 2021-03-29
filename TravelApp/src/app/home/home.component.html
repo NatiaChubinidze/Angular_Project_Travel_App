@@ -1,50 +1,4 @@
 
-    <!-- Header -->
-    <header class="">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <a class="navbar-brand" href="index.html"
-            ><h2>Travel <em>App</em></h2></a
-          >
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarResponsive"
-            aria-controls="navbarResponsive"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="index.html"
-                  >Home
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="services.html">Our Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
-              </li>
-            </ul>
-          </div>
-          <div class="functional-buttons">
-            <ul>
-              <li><a href="#">Log in</a></li>
-              <li><a href="#">Sign Up</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
 
     <!-- Banner Starts Here -->
     <div class="banner">
@@ -55,18 +9,50 @@
             <form id="suggestion_form">
               <div class="searchText searchArea">
                 <input
-                  type="text"
-                  name="q"
+                  type="search"
                   class="searchText"
-                  placeholder="Enter Your Travel Destination..."
-                  autocomplete="on"
+                  placeholder=" Travel Destination"
+                  id="query"
+                  name="query"
+                  required
+                  [(ngModel)]="queryData.query"
                 />
+                <input
+                  type="text"
+                  class="searchText"
+                  onfocus="(this.type='date')"
+                  placeholder="Check In Date"
+                  id="checkIn"
+                  name="checkIn"
+                  required
+                  [(ngModel)]="queryData.checkIn"
+                />
+                <input
+                  type="text"
+                  class="searchText"
+                  onfocus="(this.type='date')"
+                  placeholder="Check Out Date"
+                  id="checkOut"
+                  name="checkOut"
+                  required
+                  [(ngModel)]="queryData.checkOut"
+                />
+                <input
+                  type="text"
+                  class="searchText"
+                  onfocus="(this.type='number')"
+                  placeholder="Number of Adults"
+                  id="adults1"
+                  name="adults1"
+                  required
+                  [(ngModel)]="queryData.adults1"
+                />
+                <br>
          
                 <button
                   type="submit"
-                  name="results"
                   class="main-button"
-                  value="Search Now"
+                  [routerLink]="['/destination',queryData.query,queryData.checkIn,queryData.checkOut,queryData.adults1]"
                 >
                   Search Now
                 </button>
@@ -76,80 +62,7 @@
         </div>
       </div>
     </div>
+    {{queryData |json}}
     <!-- Banner Ends Here -->
 
-    <!-- Footer -->
-    <footer class="bg-light text-center text-lg-start">
-      <!-- Grid container -->
-      <div class="container p-4">
-        <!--Grid row-->
-        <div class="row">
-          <!--Grid column-->
-          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Footer Content</h5>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
-              atque ea quis molestias. Fugiat pariatur maxime quis culpa
-              corporis vitae repudiandae aliquam voluptatem veniam, est atque
-              cumque eum delectus sint!
-            </p>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Links</h5>
-
-            <ul class="list-unstyled mb-0">
-              <li>
-                <a href="#!" class="text-dark">Link 1</a>
-              </li>
-              <li>
-                <a href="#!" class="text-dark">Link 2</a>
-              </li>
-              <li>
-                <a href="#!" class="text-dark">Link 3</a>
-              </li>
-              <li>
-                <a href="#!" class="text-dark">Link 4</a>
-              </li>
-            </ul>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase mb-0">Links</h5>
-
-            <ul class="list-unstyled">
-              <li>
-                <a href="#!" class="text-dark">Link 1</a>
-              </li>
-              <li>
-                <a href="#!" class="text-dark">Link 2</a>
-              </li>
-              <li>
-                <a href="#!" class="text-dark">Link 3</a>
-              </li>
-              <li>
-                <a href="#!" class="text-dark">Link 4</a>
-              </li>
-            </ul>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-      </div>
-      <!-- Grid container -->
-
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-        © 2020 Copyright:
-        <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-      </div>
-      <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
- 
-
+    

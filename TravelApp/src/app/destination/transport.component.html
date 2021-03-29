@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="text-center mb-4">{{ destination | capitalize }} Transport</h1>
+  <div class="d-flex cardsContainer">
+    <div class="card border-dark mb-3" *ngFor="let transport of transportArray">
+      <div class="card-header cont text-center">{{ transport.type }} <img class="icon" src="https://image.flaticon.com/icons/png/128/995/995334.png"></div>
+      <div class="card-body text-dark">
+        <h5 class="card-title">{{ transport.name }}</h5>
+        <p class="card-text" [innerHTML]="transport.caption | htmldecoder"></p>
+      </div>
+    </div>
+  </div>
+</div>

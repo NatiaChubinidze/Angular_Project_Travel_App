@@ -1,0 +1,25 @@
+.container{
+    min-height:200px;
+}
+.cardContainer{
+    flex-wrap:wrap;
+    justify-content: space-between;
+}
+
+.card{
+    width:32%;
+    margin-bottom:20px;
+
+}
+.card:hover{
+    cursor:pointer;
+}
+img{
+    width:130px;
+    
+}
+
+.checked{
+    color:#ffa500;
+}
+

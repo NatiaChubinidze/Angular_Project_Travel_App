@@ -1,0 +1,18 @@
+<div class="container">
+    <ul class="nav nav-tabs" (click)="toggleVisibility($event)">
+        <li class="nav-item">
+          <button class="nav-link dark" >Landmarks</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link dark">Transport</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link dark">Hotels</button>
+        </li>
+      </ul>
+
+<app-landmarks *ngIf="visibility.landmarks" [landmarks]="landmarksArray" [destination]="queryData.query"></app-landmarks>
+<app-transport *ngIf="visibility.transport" [transportArray]="transportsArray" [destination]="queryData.query"></app-transport>
+<app-hotel *ngIf="visibility.hotels"[hotelsArray]="hotelsArray" [destination]="queryData.query" [queryData]="queryData"></app-hotel>
+</div>
+
