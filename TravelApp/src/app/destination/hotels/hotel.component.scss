@@ -1,0 +1,47 @@
+.container{
+    min-height:200px;
+}
+.cardContainer{
+    flex-wrap:wrap;
+    justify-content: space-between;
+}
+
+.card{
+    width:32%;
+    margin-bottom:20px;
+
+}
+.card:hover{
+    cursor:pointer;
+}
+img{
+    width:130px;
+    
+}
+
+.checked{
+    color:#ffa500;
+}
+
+.sortBy{
+    width:30px;
+    height:30px;
+}
+
+.stars{
+    width:100px;
+    padding:5px;
+}
+.settings{
+    justify-content: space-between;
+}
+
+span img{
+width:20px;
+height:20px;
+margin-right:5px;
+}
+span>img.yellow{
+    width:23px;
+    height:23px;
+}
