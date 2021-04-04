@@ -6,7 +6,7 @@ import {
   ITrustReviews,
 } from 'src/app/shared/interfaces/hotel-details.interface';
 import { IQuery } from 'src/app/shared/interfaces/location-response.interface';
-import { LocationService } from 'src/app/shared/services/location.service';
+import { LocationService } from 'src/app/destination/location.service';
 import { ActivatedRoute } from '@angular/router';
 import { IPhotos } from 'src/app/shared/interfaces/hotel-Images.interface';
 import { IReview, IReviewsResponse } from 'src/app/shared/interfaces/reviews.interface';

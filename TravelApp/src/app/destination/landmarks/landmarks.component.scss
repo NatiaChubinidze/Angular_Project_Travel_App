@@ -4,22 +4,15 @@
 .cardContainer{
     flex-wrap:wrap;
     justify-content: space-between;
+    min-height:480px;
 }
 
 .card{
     width:32%;
     margin-bottom:20px;
-
-}
-.card:hover{
-    cursor:pointer;
-}
-img{
-    width:130px;
-    
 }
 
-.checked{
-    color:#ffa500;
+.pagination{
+    width:fit-content;
+    text-align: center;
 }
-

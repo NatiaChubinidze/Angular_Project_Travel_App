@@ -4,10 +4,10 @@ import {
   ILocationResponse,
   IQuery,
   ISuggestionItem,
-} from '../shared/interfaces/location-response.interface';
-import { LocationService } from '../shared/services/location.service';
+} from '../../shared/interfaces/location-response.interface';
+import { LocationService } from '../location.service';
 import { DatePipe } from '@angular/common';
-import { IItems, IPropertiesResponse, IResultInterface } from '../shared/interfaces/properties-list-response.interface';
+import { IItems, IPropertiesResponse, IResultInterface } from '../../shared/interfaces/properties-list-response.interface';
 @Component({
   selector: 'app-destination',
   templateUrl: './destination.component.html',
@@ -89,6 +89,7 @@ export class DestinationComponent implements OnInit {
       this.getLocation.getPropertiesList(this.cityId,this.queryData.checkIn,this.queryData.checkOut,this.queryData.adults1).subscribe((info:IPropertiesResponse)=>{
         console.log(info);
         this.hotelsArray=info.data.body.searchResults.results;
+        this.hotelsArray.sort((a,b)=>b.starRating-a.starRating);
         console.log(this.hotelsArray);
         console.log(info.data.body);
         this.landmarksArray=info.data.body.filters.landmarks.items;
