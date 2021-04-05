@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 
 import { IQuery } from '../../shared/interfaces/location-response.interface';
+import { LocationService } from '../location.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-hotel',
@@ -15,15 +17,25 @@ import { IQuery } from '../../shared/interfaces/location-response.interface';
   styleUrls: ['./hotel.component.scss'],
 })
 export class HotelComponent implements OnInit {
-  @Input() hotelsArray: IResultInterface[];
-  @Input() destination: string;
-  @Input() queryData: IQuery;
+  hotelsArray: IResultInterface[];
+  destination: string;
+  queryData: IQuery;
+
   clonedHotelsArray: IResultInterface[];
-  counter: number = 0;
   hotelId: number;
+  counter: number = 0;
+  
   searchTerm: string = '';
   sortByDesc: boolean = true;
-  constructor() {}
+  
+  constructor(private getLocation: LocationService,private _activeRoute: ActivatedRoute) {
+    this.destination=this.getLocation.queryData.query;
+    this.queryData=this.getLocation.queryData;
+    const result=this._activeRoute.snapshot.data['hotelsData'];
+    this.getLocation.hotelsArray=result.data.body.searchResults.results;
+    this.getLocation.hotelsArray.sort((a,b)=>b.starRating-a.starRating);
+    this.hotelsArray=this.clonedHotelsArray=this.getLocation.hotelsArray.slice();
+  }
   ratingForm: FormGroup;
   stars: FormControl;
 

@@ -17,13 +17,13 @@ import { IPropertiesResponse } from '../shared/interfaces/properties-list-respon
 @Injectable({
   providedIn: 'root',
 })
-export class DestinationResolverService implements Resolve<ILocationResponse> {
+export class HotelsLandmarksResolverService implements Resolve<IPropertiesResponse> {
   constructor(private getLocation: LocationService) {}
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<ILocationResponse> {
+  ): Observable<IPropertiesResponse> {
    
-    return this.getLocation.getDestinationData();
+    return this.getLocation.getPropertiesList();
 }
 }
