@@ -1,18 +1,20 @@
-.container{
-    min-height:200px;
+.container {
+  min-height: 200px;
+  padding: 10% 20px;
+  background-color: white;
 }
-.cardContainer{
-    flex-wrap:wrap;
-    justify-content: space-between;
-    min-height:480px;
-}
-
-.card{
-    width:32%;
-    margin-bottom:20px;
+.cardContainer {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: 480px;
 }
 
-.pagination{
-    width:fit-content;
-    text-align: center;
+.card {
+  width: 32%;
+  margin-bottom: 20px;
+}
+
+.pagination {
+  width: fit-content;
+  text-align: center;
 }
