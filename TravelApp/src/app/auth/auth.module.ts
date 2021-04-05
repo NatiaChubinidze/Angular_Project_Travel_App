@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import {AngularFireAuthModule } from '@angular/fire/auth';
+import {NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpHeaderInterceptor } from './add-header.interceptor';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -12,6 +14,9 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
+    AngularFireAuthModule,
+    NgxAuthFirebaseUIModule,
     RouterModule.forChild([
       { 
       path: 'signIn', 
@@ -27,12 +32,6 @@ import { CommonModule } from '@angular/common';
       pathMatch:'full',
     }
     ]),
-  ],
-  providers:[
-    { provide:HTTP_INTERCEPTORS,
-      useClass:HttpHeaderInterceptor,
-      multi:true
-    },
   ],
 })
 export class AuthModule {}
