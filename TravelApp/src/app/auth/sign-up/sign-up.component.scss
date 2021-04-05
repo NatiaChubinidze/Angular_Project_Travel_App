@@ -10,7 +10,7 @@
     font-family: "Dancing Script", cursive !important;
   }
   .container {
-    padding: 150px 70px 110px 50px;
+    padding: 0px 70px 110px 50px;
     height: 100vh;
   }
   ::placeholder {
@@ -79,3 +79,28 @@
   h1{
     width:300px;
   }
+
+  
+.required {
+  color: rgb(255, 61, 61);
+  float: right;
+}
+
+.group-btn {
+  width: auto;
+}
+
+.loginBtn {
+  width: 100px;
+}
+.patternText {
+  height: 50px;
+}
+
+.errorText {
+  min-height: 100px;
+}
+
+.emailRegInfo{
+  min-height:20px;
+}

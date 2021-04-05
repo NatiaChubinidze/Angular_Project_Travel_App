@@ -36,8 +36,8 @@
             <div class="functional-buttons">
               <ul>
                 <li><a *ngIf="logOutVisibility" (click)="logOut()" class="logOut">Log Out</a></li>
-                <li><a>Sign In</a></li>
-                <li><a>Sign Up</a></li>
+                <li><a [routerLink]="['/signIn']">Sign In</a></li>
+                <li><a [routerLink]="['/signUp']">Sign Up</a></li>
               </ul>
             </div>
           </div>
