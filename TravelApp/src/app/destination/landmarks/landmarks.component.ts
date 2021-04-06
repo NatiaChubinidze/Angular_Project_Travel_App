@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IItems } from 'src/app/shared/interfaces/properties-list-response.interface';
 
-import { ISuggestionItem } from '../../shared/interfaces/location-response.interface';
 import { LocationService } from '../location.service';
 
 @Component({
