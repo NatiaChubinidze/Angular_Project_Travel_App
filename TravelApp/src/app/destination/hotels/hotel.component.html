@@ -1,0 +1,112 @@
+<div class="container">
+  <h1 class="text-center mb-4">{{ destination | capitalize }} Hotels</h1>
+  <div class="d-flex settings">
+    <div class="col-4 d-inline-block mb-3">
+      <input
+        class="form-control"
+        type="search"
+        placeholder="Search Landmarks"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="handleChange()"
+      />
+    </div>
+    <div class="col-3">
+      <form [formGroup]="ratingForm">
+        <label for="stars">Filter Hotels By Stars</label>
+        <select
+          class="stars ms-3"
+          name="stars"
+          id="stars"
+          (change)="changeStars($event)"
+          formControlName="stars"
+        >
+          <option value=""></option>
+          <option value="1">1 star</option>
+          <option value="2">2 stars</option>
+          <option value="3">3 stars</option>
+          <option value="4">4 stars</option>
+          <option value="5">5 stars</option>
+        </select>
+      </form>
+    </div>
+
+    <img
+      class="sortBy align-self-flex-end"
+      [src]="
+        sortByDesc
+          ? 'https://image.flaticon.com/icons/png/128/714/714543.png'
+          : 'https://image.flaticon.com/icons/png/128/475/475288.png'
+      "
+      (click)="toggleSortBy()"
+    />
+  </div>
+  <div class="d-flex cardContainer">
+    <div
+      class="card border-warning mb-3"
+      *ngFor="let hotel of hotelsArray"
+      [routerLink]="['hotel-details', hotel.id]"
+    >
+      <div class="mx-auto p-3">
+        <img
+          src="https://image.flaticon.com/icons/png/128/508/508965.png"
+          class="card-img-top"
+          alt="Hotel Thumbnail"
+        />
+      </div>
+      <div class="card-header text-center">
+        {{ hotel.address.streetAddress }}, {{ hotel.address.locality }}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title text-center">{{ hotel.name }}</h5>
+        <p class="card-text text-center">Star Rating</p>
+        <div class="mx-auto text-center">
+          <span>
+            <img
+              [src]="
+                hotel.starRating > 0
+                  ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
+                  : 'https://image.flaticon.com/icons/png/128/616/616821.png'
+              "
+              [class.yellow]="hotel.starRating>0"/>
+          </span>
+          <span>
+            <img
+              [src]="
+                hotel.starRating > 1
+                  ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
+                  : 'https://image.flaticon.com/icons/png/128/616/616821.png'
+              "
+              [class.yellow]="hotel.starRating>1"/>
+          </span>
+          <span>
+            <img
+              [src]="
+                hotel.starRating > 2
+                  ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
+                  : 'https://image.flaticon.com/icons/png/128/616/616821.png'
+              "
+              [class.yellow]="hotel.starRating>2"/>
+          </span>
+          <span>
+            <img
+              [src]="
+                hotel.starRating > 3
+                  ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
+                  : 'https://image.flaticon.com/icons/png/128/616/616821.png'
+              "
+            [class.yellow]="hotel.starRating>3"/>
+          </span>
+          <span>
+            <img
+              [src]="
+                hotel.starRating > 4
+                  ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
+                  : 'https://image.flaticon.com/icons/png/128/616/616821.png'
+              "
+              [class.yellow]="hotel.starRating>4"/>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

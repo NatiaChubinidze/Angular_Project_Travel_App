@@ -19,17 +19,25 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav ml-auto">
-                
-                <li class="nav-item">
-                  <a class="nav-link" >Get Information About Landmarks, Transport and Hotels</a>
+                <li class="nav-item" *ngIf="(authService.currentUser$ | async)?.uid">
+                  <a class="nav-link" [routerLink]="['/transport']" routerLinkActive="active">Transport</a>
                 </li>
-               
+                <li class="nav-item" *ngIf="(authService.currentUser$ | async)?.uid">
+                  <a class="nav-link" [routerLink]="['/landmarks']" routerLinkActive="active">Landmarks</a>
+                </li>
+                <li class="nav-item" *ngIf="(authService.currentUser$ | async)?.uid">
+                  <a class="nav-link" [routerLink]="['/hotels']" routerLinkActive="active">Hotels</a>
+                </li>
+                <li class="nav-item" *ngIf="(authService.currentUser$ | async)?.uid">
+                  <a class="nav-link" [routerLink]="['/myReviews']" routerLinkActive="active">My Reviews</a>
+                </li>
               </ul>
             </div>
             <div class="functional-buttons">
               <ul>
-                <li><a *ngIf="logOutVisibility" (click)="logOut()" class="logOut">Log Out</a></li>
-                <li></li>
+                <li><a *ngIf="(authService.currentUser$ | async)?.uid" (click)="logOut()" class="logOut">Log Out</a></li>
+                <li><a *ngIf="!(authService.currentUser$ | async)?.uid"[routerLink]="['/signIn']" routerLinkActive="active">Sign In</a></li>
+                <li><a *ngIf="!(authService.currentUser$ | async)?.uid"[routerLink]="['/signUp']" routerLinkActive="active">Sign Up</a></li>
               </ul>
             </div>
           </div>

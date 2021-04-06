@@ -6,7 +6,7 @@
         <div class="header-text caption">
           <h2>Choose your destination</h2>
           <div id="search-section">
-            <form id="suggestion_form">
+            <form id="suggestion_form" (ngSubmit)="onSubmit()">
               <div class="searchText searchArea">
                 <input
                   type="search"
@@ -15,7 +15,7 @@
                   id="query"
                   name="query"
                   required
-                  [(ngModel)]="queryData.query"
+                  [(ngModel)]="getLocation.queryData.query"
                 />
                 <input
                   type="text"
@@ -25,7 +25,7 @@
                   id="checkIn"
                   name="checkIn"
                   required
-                  [(ngModel)]="queryData.checkIn"
+                  [(ngModel)]="getLocation.queryData.checkIn"
                 />
                 <input
                   type="text"
@@ -35,7 +35,7 @@
                   id="checkOut"
                   name="checkOut"
                   required
-                  [(ngModel)]="queryData.checkOut"
+                  [(ngModel)]="getLocation.queryData.checkOut"
                 />
                 <input
                   type="text"
@@ -45,14 +45,14 @@
                   id="adults1"
                   name="adults1"
                   required
-                  [(ngModel)]="queryData.adults1"
+                  [(ngModel)]="getLocation.queryData.adults1"
                 />
                 <br>
          
                 <button
                   type="submit"
                   class="main-button"
-                  [routerLink]="['/destination',queryData.query,queryData.checkIn,queryData.checkOut,queryData.adults1]"
+                  [routerLink]="['/transport']"
                 >
                   Search Now
                 </button>
@@ -62,7 +62,7 @@
         </div>
       </div>
     </div>
-    {{queryData |json}}
+    {{getLocation.queryData |json}}
     <!-- Banner Ends Here -->
 
     
