@@ -4,6 +4,7 @@ import {FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
 import { IUserInfo } from 'src/app/shared/interfaces/auth.interface';
 import { FireBaseAuthService } from '../firebase-auth.service';
 import {MustMatch} from 'src/app/shared/services/passwords-match.validator';
+import { forbiddenNameValidator } from 'src/app/shared/services/forbidden-name.validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -30,7 +31,8 @@ export class SignUpComponent implements OnInit {
       Validators.compose([
         Validators.required,
         Validators.email,
-        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        forbiddenNameValidator(/testMail@test.com/i)
       ])
     );
     this.password = new FormControl(

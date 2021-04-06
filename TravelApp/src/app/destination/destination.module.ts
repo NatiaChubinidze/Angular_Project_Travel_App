@@ -17,6 +17,7 @@ import {HttpCacheInterceptorService} from '../core/cache.interceptor';
 import {CarouselBasicModule} from '../shared/components/carousel/carousel.module';
 import { DestinationResolverService } from './destination-resolver.service';
 import { HotelsLandmarksResolverService } from './hotels-landmarks-resolver.service';
+import { AuthGuard } from '../auth/auth.guard';
 
 
 @NgModule({
@@ -40,27 +41,31 @@ import { HotelsLandmarksResolverService } from './hotels-landmarks-resolver.serv
       {
         path:'hotels/hotel-details/:hotelId',
         component:HotelDetailsComponent,
+        canActivate:[AuthGuard]
       },
       {
         path:'landmarks',
         component:LandmarksComponent,
         resolve:{
           landmarksData:HotelsLandmarksResolverService
-        }
+        },
+        canActivate:[AuthGuard]
       },
       {
         path:'hotels',
         component:HotelComponent,
         resolve:{
           hotelsData:HotelsLandmarksResolverService
-        }
+        },
+        canActivate:[AuthGuard]
       },
       {
         path:'transport',
         component:TransportComponent,
         resolve:{
           destinationResponse:DestinationResolverService
-        }
+        },
+        canActivate:[AuthGuard]
       },
     ])
   ],

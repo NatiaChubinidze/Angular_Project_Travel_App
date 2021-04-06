@@ -52,7 +52,7 @@ export class FireBaseAuthService {
         if (localStorage.getItem(TRAVEL_TOKEN_EXP_KEY)) {
           localStorage.removeItem(TRAVEL_TOKEN_EXP_KEY);
         }
-        this._router.navigate(['/login']);
+        this._router.navigate(['/signIn']);
       }
 
   isSignedIn():boolean{
@@ -131,7 +131,7 @@ export class FireBaseAuthService {
         if (userInfo && userInfo.uid) {
           return true;
         } else {
-          this._router.navigate(['/login']);
+          this._router.navigate(['/signIn']);
           return false;
         }
       })
