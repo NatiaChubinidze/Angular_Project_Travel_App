@@ -17,8 +17,8 @@
         <form [formGroup]="authForm" (ngSubmit)="register()">
           <div class="emailRegInfo">
             <em class="required" *ngIf="emailIsInvalid()"
-              >Required Pattern: Must contain @ and a dot. Forbidden Username -
-              test@test.com</em
+              >Required Pattern: Must contain @ and a dot. No Uppercase letters. Forbidden Username -
+              testmail@test.com</em
             >
           </div>
           <input
