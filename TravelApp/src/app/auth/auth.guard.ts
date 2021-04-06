@@ -3,7 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } fro
 import { Observable } from 'rxjs';
 import { FireBaseAuthService } from './firebase-auth.service';
 
-import {LocationService} from '../destination/location.service'
+import {LocationService} from '../destination/location.service';
 @Injectable({
   providedIn: 'root'
 })
