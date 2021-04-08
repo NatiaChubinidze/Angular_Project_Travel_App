@@ -31,8 +31,11 @@
                 <li class="nav-item" *ngIf="authService.userIsLoggedIn">
                   <a class="nav-link" [routerLink]="['/hotels']" routerLinkActive="active">Hotels</a>
                 </li>
-                <li class="nav-item" *ngIf="authService.userIsLoggedIn">
+                <li class="nav-item" *ngIf="authService.userIsLoggedIn && !authService.isAdmin">
                   <a class="nav-link" [routerLink]="['/myReviews']" routerLinkActive="active">My Reviews</a>
+                </li>
+                <li class="nav-item" *ngIf="authService.userIsLoggedIn && authService.isAdmin">
+                  <a class="nav-link" [routerLink]="['/reviews']" routerLinkActive="active">Users' Reviews</a>
                 </li>
               </ul>
             </div>

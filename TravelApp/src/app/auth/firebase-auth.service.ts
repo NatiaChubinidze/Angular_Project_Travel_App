@@ -17,6 +17,7 @@ import { IUserInfo } from '../shared/interfaces/auth.interface';
 })
 export class FireBaseAuthService {
   currentUser$ = new Observable<firebase.User | null>();
+  isAdmin:boolean=false;
   userIsLoggedIn:boolean=false;
   githubAuth: boolean;
   googleAuth: boolean;
@@ -116,6 +117,10 @@ export class FireBaseAuthService {
       .then((userInfo) => {
         console.log(userInfo);
         if (userInfo.user) {
+          if(userInfo.user.email==="admin@test.com"){
+            this.isAdmin=true;
+          }
+          
           this.userIsLoggedIn=true;
           localStorage.setItem(TRAVEL_APP_KEY, userInfo.user.refreshToken);
           this.setTokenValidTime();
@@ -134,6 +139,7 @@ export class FireBaseAuthService {
       .then((data) => {
         console.log(data);
         if (data.user) {
+          this.userIsLoggedIn=true;
           localStorage.setItem(TRAVEL_APP_KEY, data.user.refreshToken);
           this.setTokenValidTime();
           this._router.navigate(['/home']);
