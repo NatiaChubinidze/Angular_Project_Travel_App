@@ -11,7 +11,7 @@ import { TOKEN_EXP_TIME, TRAVEL_APP_KEY, TRAVEL_TOKEN_EXP_KEY } from '../shared/
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  
+ 
   constructor(public authService: FireBaseAuthService, private router: Router, 
     private auth:AngularFireAuth) {}
 
@@ -45,5 +45,6 @@ export class HeaderComponent implements OnInit {
     console.log("sign out");
     console.log(this.auth.signOut());
     this.authService.signOut();
+    this.authService.isAdmin=false;
   }
 }
