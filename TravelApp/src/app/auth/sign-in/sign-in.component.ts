@@ -65,4 +65,7 @@ export class SignInComponent implements OnInit {
   githubSignin() {
     this.fireBaseAuthService.signInGithub();
   }
+  facebookSignin(){
+    this.fireBaseAuthService.signInFacebook();
+  }
 }

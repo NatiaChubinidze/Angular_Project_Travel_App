@@ -18,7 +18,7 @@ export class LocationService {
     checkIn: '',
     checkOut: '',
   };
-
+dataIsValid:boolean=false;
   citiesArray: ISuggestionItem[];
   hotelsArray: IResultInterface[];
   landmarksArray:IItems[];
@@ -32,6 +32,8 @@ export class LocationService {
   constructor(private http: HttpClient) {}
 
   getDestinationData(): Observable<ILocationResponse> {
+    console.log("getting destination data");
+    console.log(this.queryData);
     return this.http
       .get<ILocationResponse>(
         `${this.baseUrl}/locations/search?query=${this.queryData.query}&locale=en_US`

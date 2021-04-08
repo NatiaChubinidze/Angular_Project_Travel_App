@@ -17,7 +17,7 @@ import { IUserInfo } from '../shared/interfaces/auth.interface';
 })
 export class FireBaseAuthService {
   currentUser$ = new Observable<firebase.User | null>();
-
+  userIsLoggedIn:boolean=false;
   githubAuth: boolean;
   googleAuth: boolean;
   errorMessage: string;
@@ -52,6 +52,7 @@ export class FireBaseAuthService {
         if (localStorage.getItem(TRAVEL_TOKEN_EXP_KEY)) {
           localStorage.removeItem(TRAVEL_TOKEN_EXP_KEY);
         }
+        this.userIsLoggedIn=false;
         this._router.navigate(['/signIn']);
       }
 
@@ -68,6 +69,7 @@ export class FireBaseAuthService {
       .signInWithPopup(new firebase.auth.GithubAuthProvider())
       .then((data: any) => {
         if (data.credential.accessToken) {
+          this.userIsLoggedIn=true;
           this._router.navigate(['/home']);
         }
       })
@@ -83,6 +85,22 @@ export class FireBaseAuthService {
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((data: any) => {
         if (data.credential.accessToken) {
+          this.userIsLoggedIn=true;
+          this._router.navigate(['/home']);
+        }
+      })
+      .catch((error) => {
+        this.errorMessage = error.message;
+      });
+  }
+
+  signInFacebook() {
+    this.errorMessage = null;
+    this.auth
+      .signInWithPopup(new firebase.auth.FacebookAuthProvider())
+      .then((data: any) => {
+        if (data.credential.accessToken) {
+          this.userIsLoggedIn=true;
           this._router.navigate(['/home']);
         }
       })
@@ -98,6 +116,7 @@ export class FireBaseAuthService {
       .then((userInfo) => {
         console.log(userInfo);
         if (userInfo.user) {
+          this.userIsLoggedIn=true;
           localStorage.setItem(TRAVEL_APP_KEY, userInfo.user.refreshToken);
           this.setTokenValidTime();
           this._router.navigate(['/home']);

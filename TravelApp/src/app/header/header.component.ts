@@ -12,7 +12,8 @@ import { TOKEN_EXP_TIME, TRAVEL_APP_KEY, TRAVEL_TOKEN_EXP_KEY } from '../shared/
 })
 export class HeaderComponent implements OnInit {
   
-  constructor(public authService: FireBaseAuthService, private router: Router, private auth:AngularFireAuth) {}
+  constructor(public authService: FireBaseAuthService, private router: Router, 
+    private auth:AngularFireAuth) {}
 
   ngOnInit(): void {
     if (localStorage.getItem(TRAVEL_APP_KEY)) {
