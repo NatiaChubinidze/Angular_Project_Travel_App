@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { ISuggestionItem } from '../../shared/interfaces/location-response.interface';
 import { LocationService } from '../location.service';
 
@@ -24,7 +25,6 @@ export class TransportComponent implements OnInit {
           suggestion.entities;
       } else if (suggestion.group === 'CITY_GROUP') {
         this.getLocation.citiesArray = suggestion.entities;
-        console.log('cities array', this.getLocation.citiesArray);
       }
     });
 

@@ -13,69 +13,70 @@
       <div class="col-md-offset-5 col-md-4 loginCont">
         <h1 class="text-white ms-3">Please, Sign Up</h1>
         <div class="form-login">
-        <h4>Your Credentials</h4>
-        <form [formGroup]="authForm" (ngSubmit)="register()">
-          <div class="emailRegInfo">
-            <em class="required" *ngIf="emailIsInvalid()"
-              >Required Pattern: Must contain @ and a dot. No Uppercase letters. Forbidden Username -
-              testmail@test.com</em
-            >
-          </div>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            class="form-control input-sm chat-input"
-            placeholder="username"
-            formControlName="email"
-            [ngClass]="{ 'is-invalid': emailIsInvalid() }"
-          />
-          <div class="patternText">
-            <em class="required" *ngIf="passwordIsInvalid()"
-              >Required Pattern: min(6), max(20) characters, 1 lowercase, 1
-              uppercase, 1 special character, 1 number
-            </em>
-          </div>
-          <input
-            type="text"
-            id="password"
-            name="password"
-            class="form-control input-sm chat-input"
-            placeholder="password"
-            formControlName="password"
-            [ngClass]="{ 'is-invalid': passwordIsInvalid() }"
-          />
-          <div class="emailRegInfo">
-            <em class="required" *ngIf="confirmPasswordIsInvalid()"
-              >Required. Passwords must match!</em
-            >
-          </div>
-          <input
-            type="text"
-            id="reEnterPassword"
-            name="reEnterPassword"
-            class="form-control input-sm chat-input"
-            placeholder="Re-enter password"
-            formControlName="reEnterPassword"
-            [ngClass]="{ 'is-invalid': confirmPasswordIsInvalid() }"
-            autocomplete="off"
-          />
-
-          <div class="wrapper">
-            <div
-              class="col-5 mx-auto"
-              (mouseenter)="buttonHover = true"
-              (mouseleave)="buttonHover = false"
-            >
-              <button
-                class="btn signUp btn-md mt-3"
-                [disabled]="authForm.invalid"
+          <h4>Your Credentials</h4>
+          <form [formGroup]="authForm" (ngSubmit)="register()">
+            <div class="emailRegInfo">
+              <em class="required" *ngIf="emailIsInvalid()"
+                >Required Pattern: Must contain @ and a dot. No Uppercase
+                letters. Forbidden Username - admin@test.com</em
               >
-                Sign Up
-              </button>
             </div>
-          </div>
-        </form>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              class="form-control input-sm chat-input"
+              placeholder="username"
+              formControlName="email"
+              [ngClass]="{ 'is-invalid': emailIsInvalid() }"
+            />
+            <div class="patternText">
+              <em class="required" *ngIf="passwordIsInvalid()"
+                >Required Pattern: min(6), max(20) characters, 1 lowercase, 1
+                uppercase, 1 special character, 1 number
+              </em>
+            </div>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control input-sm chat-input"
+              placeholder="password"
+              formControlName="password"
+              [ngClass]="{ 'is-invalid': passwordIsInvalid() }"
+            />
+            <div class="emailRegInfo">
+              <em class="required" *ngIf="confirmPasswordIsInvalid()"
+                >Required. Passwords must match!</em
+              >
+            </div>
+            <input
+              type="password"
+              id="reEnterPassword"
+              name="reEnterPassword"
+              class="form-control input-sm chat-input"
+              placeholder="Re-enter password"
+              formControlName="reEnterPassword"
+              [ngClass]="{ 'is-invalid': confirmPasswordIsInvalid() }"
+              autocomplete="off"
+            />
+
+            <div class="wrapper">
+              <div
+                class="col-5 mx-auto"
+                (mouseenter)="buttonHover = true"
+                (mouseleave)="buttonHover = false"
+              >
+                <button
+                  class="btn signUp btn-md mt-3"
+                  [disabled]="authForm.invalid"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

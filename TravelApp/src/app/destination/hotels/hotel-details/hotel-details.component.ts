@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { LocationService } from 'src/app/destination/location.service';
+import { IPhotos } from 'src/app/shared/interfaces/hotel-Images.interface';
 import {
   IBody,
   IDetailsResponse,
   ITransportLocation,
-  ITrustReviews,
 } from 'src/app/shared/interfaces/hotel-details.interface';
-import { IQuery } from 'src/app/shared/interfaces/location-response.interface';
-import { LocationService } from 'src/app/destination/location.service';
-import { ActivatedRoute } from '@angular/router';
-import { IPhotos } from 'src/app/shared/interfaces/hotel-Images.interface';
+
 import {
   IReview,
   IReviewsResponse,
 } from 'src/app/shared/interfaces/reviews.interface';
+
+
 @Component({
   selector: 'app-hotel-details',
   templateUrl: './hotel-details.component.html',
@@ -36,9 +38,6 @@ export class HotelDetailsComponent implements OnInit {
       .getDetailedInfo(this.hotelId)
       .subscribe((data: IDetailsResponse) => {
         this.dataArray = data.data.body;
-        console.log(this.dataArray.propertyDescription.featuredPrice.oldPrice);
-        console.log(this.hotelId);
-        console.log(this.dataArray);
         this.transportsArray = data.transportation.transportLocations;
         this.neighborhood = data.neighborhood.neighborhoodName;
         this.locationService

@@ -1,108 +1,106 @@
+.body {
+  background-image: url("https://img5.goodfon.com/wallpaper/nbig/b/73/oia-santorini-greece-aegean-sea-iia-santorini-gretsiia-ege-2.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
-  .body{
-    background-image: url("https://img5.goodfon.com/wallpaper/nbig/b/73/oia-santorini-greece-aegean-sea-iia-santorini-gretsiia-ege-2.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  
-    -webkit-font-smoothing: antialiased;
-    font: normal 14px Roboto, arial, sans-serif;
-    font-family: "Dancing Script", cursive !important;
-  }
-  .container {
-    padding: 70px 70px 110px 50px;
-    height: 100vh;
-  }
-  ::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #ffffff !important;
-    opacity: 1; /* Firefox */
-    font-size: 18px !important;
-  }
-  .form-login {
-    width:90%;
-    background-color:rgba(148, 84, 85, 0.5);
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 15px;
-    border-color: #d2d2d2;
-    border-width: 5px;
-    color: white;
-    box-shadow: 0 1px 0 #cfcfcf;
-  }
-  .form-control {
-    background: transparent !important;
-    color: white !important;
-    font-size: 18px !important;
-    border-radius: 10px;
-  }
-  .form-login h1 {
-    color: white !important;
-    
-  }
-  h4 {
-    border: 0 solid #fff;
-    border-bottom-width: 1px;
-    padding-bottom: 10px;
-    text-align: center;
-  }
-  
-  .text-white {
-    color:white !important;
-  }
-  .wrapper {
-    text-align: center;
-  }
-  .footer p {
-    font-size: 18px;
-  }
-  
-  .row {
-    justify-content:center;
-  }
+  -webkit-font-smoothing: antialiased;
+  font: normal 14px Roboto, arial, sans-serif;
+  font-family: "Dancing Script", cursive !important;
+}
+.container {
+  padding: 70px 70px 110px 50px;
+  height: 100vh;
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #ffffff !important;
+  opacity: 1; /* Firefox */
+  font-size: 18px !important;
+}
+.form-login {
+  width: 90%;
+  background-color: rgba(148, 84, 85, 0.5);
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 15px;
+  border-color: #d2d2d2;
+  border-width: 5px;
+  color: white;
+  box-shadow: 0 1px 0 #cfcfcf;
+}
+.form-control {
+  background: transparent !important;
+  color: white !important;
+  font-size: 18px !important;
+  border-radius: 10px;
+}
+.form-login h1 {
+  color: white !important;
+}
+h4 {
+  border: 0 solid #fff;
+  border-bottom-width: 1px;
+  padding-bottom: 10px;
+  text-align: center;
+}
 
-  .login{
-    background-color:white;
-    width:70px;
-  }
+.text-white {
+  color: white !important;
+}
+.wrapper {
+  text-align: center;
+}
+.footer p {
+  font-size: 18px;
+}
 
-  a.signUp{
-    margin-top:0px;
-  }
+.row {
+  justify-content: center;
+}
 
-  .loginCont{
-    width:400px;
-  }
+.login {
+  background-color: white;
+  width: 70px;
+}
 
-  h1{
-    width:300px;
-  }
+a.signUp {
+  margin-top: 0px;
+}
 
-  .required {
-    color: rgb(255, 61, 61);
-    float: right;
-  }
-  
-  .group-btn {
-    width: auto;
-  }
-  
-  .loginBtn {
-    width: 100px;
-  }
-  .patternText {
-    height: 50px;
-  }
-  
-  .errorText {
-    min-height: 55px;
-  }
-  .emailRegInfo{
-    min-height:20px;
-  }
+.loginCont {
+  width: 400px;
+}
 
-  a:hover{
-    cursor:pointer;
-  }
+h1 {
+  width: 300px;
+}
+
+.required {
+  color: rgb(255, 61, 61);
+  float: right;
+}
+
+.group-btn {
+  width: auto;
+}
+
+.loginBtn {
+  width: 100px;
+}
+.patternText {
+  height: 50px;
+}
+
+.errorText {
+  min-height: 55px;
+}
+.emailRegInfo {
+  min-height: 20px;
+}
+
+a:hover {
+  cursor: pointer;
+}
