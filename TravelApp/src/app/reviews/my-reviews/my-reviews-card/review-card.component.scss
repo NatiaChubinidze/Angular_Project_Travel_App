@@ -1,39 +1,40 @@
 .card {
-    width: 298px;
-    min-height:170px;
+  width: 298px;
+  height: 200px;
 }
 
-
-.edit,.delete{
-    width:20px;
-    height:20px;
+.edit,
+.delete {
+  width: 20px;
+  height: 20px;
 }
 
-.edit-delete{
-   float: right;
+.edit-delete {
+  float: right;
 }
 
-.edit, .delete:hover{
-    cursor:pointer;
+.edit,
+.delete:hover {
+  cursor: pointer;
 }
-.card-img-top{
-    height:200px;
-}
-
-.card-body{
-    width:100%;
+.card-img-top {
+  height: 200px;
 }
 
-.img{
-    width:100%;
+.card-body {
+  width: 100%;
+}
+
+.img {
+  width: 100%;
 }
 span img {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
 
 span > img.yellow {
-    width: 23px;
-    height: 23px;
-  }
+  width: 23px;
+  height: 23px;
+}

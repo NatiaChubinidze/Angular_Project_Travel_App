@@ -8,54 +8,105 @@
               <div class="card card-img">
                 <app-carousel [images]="images"></app-carousel>
                 <div class="card-body">
-
                   <div class="task-tags mt-4">
                     <h5 class="">Tags</h5>
                     <div class="bootstrap-tagsinput">
-                      <span class="tag label label-info"
-                        *ngIf="neighborhood"
-                      >Neighborhood - {{ neighborhood }}<span data-role="remove"></span
+                      <span class="tag label label-info" *ngIf="neighborhood"
+                        >Neighborhood - {{ neighborhood
+                        }}<span data-role="remove"></span
                       ></span>
 
                       <span *ngIf="transportsArray">
-                      <span class="tag label label-info" *ngFor="let item of transportsArray"
-                        >Transport - {{ item.category | capitalize }}<span data-role="remove"></span
-                      ></span></span>
+                        <span
+                          class="tag label label-info"
+                          *ngFor="let item of transportsArray"
+                          >Transport - {{ item.category | capitalize
+                          }}<span data-role="remove"></span></span
+                      ></span>
 
-                      <span class="tag label label-info"
-                        >
-                      Reviews (Total {{ dataArray?.guestReviews?.brands?.total }})
-                      {{ dataArray?.guestReviews?.brands?.rating }}/{{
-                        dataArray?.guestReviews?.brands?.scale
-                      }}<span data-role="remove"></span
+                      <span class="tag label label-info">
+                        Reviews (Total
+                        {{ dataArray?.guestReviews?.brands?.total }})
+                        {{ dataArray?.guestReviews?.brands?.rating }}/{{
+                          dataArray?.guestReviews?.brands?.scale
+                        }}<span data-role="remove"></span
                       ></span>
                     </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <h4 class="m-b-20 text-cont mb-4 ms-3">Description</h4>
-          <h5 *ngIf="dataArray?.propertyDescription?.featuredPrice" class="ms-3">Pricing</h5>
-          <p class="text-muted ms-3">{{dataArray?.propertyDescription?.featuredPrice?.pricingTooltip}}. <span>{{dataArray?.propertyDescription?.featuredPrice?.priceInfo}}. </span><span *ngIf="dataArray?.propertyDescription?.featuredPrice?.currentPrice?.formatted">Current Price: {{dataArray?.propertyDescription?.featuredPrice?.currentPrice?.formatted}}.</span> <span *ngIf="dataArray?.propertyDescription?.featuredPrice.oldPrice"> Old Price: {{dataArray?.propertyDescription?.featuredPrice.oldPrice}} </span></p>
-          <h5 *ngIf="dataArray?.propertyDescription?.roomTypeNames" class="ms-3">Room Types Available</h5>
-          <p class="text-muted ms-3" *ngFor="let item of dataArray?.propertyDescription?.roomTypeNames"> - {{item}}</p>
-          <p *ngIf="dataArray?.roomsAndRates?.bookingUrl" class="ms-3"><b>Booking URL: {{dataArray?.roomsAndRates?.bookingUrl}}</b> <img class="bookingLink" src="https://image.flaticon.com/icons/png/128/126/126481.png"></p>
-          <div class="clearfix"></div>
+            <h4 class="m-b-20 text-cont mb-4 ms-3">Description</h4>
+            <h5
+              *ngIf="dataArray?.propertyDescription?.featuredPrice"
+              class="ms-3"
+            >
+              Pricing
+            </h5>
+            <p class="text-muted ms-3">
+              {{
+                dataArray?.propertyDescription?.featuredPrice?.pricingTooltip
+              }}.
+              <span
+                >{{
+                  dataArray?.propertyDescription?.featuredPrice?.priceInfo
+                }}. </span
+              ><span
+                *ngIf="
+                  dataArray?.propertyDescription?.featuredPrice?.currentPrice
+                    ?.formatted
+                "
+                >Current Price:
+                {{
+                  dataArray?.propertyDescription?.featuredPrice?.currentPrice
+                    ?.formatted
+                }}.</span
+              >
+              <span
+                *ngIf="dataArray?.propertyDescription?.featuredPrice.oldPrice"
+              >
+                Old Price:
+                {{ dataArray?.propertyDescription?.featuredPrice.oldPrice }}
+              </span>
+            </p>
+            <h5
+              *ngIf="dataArray?.propertyDescription?.roomTypeNames"
+              class="ms-3"
+            >
+              Room Types Available
+            </h5>
+            <p
+              class="text-muted ms-3"
+              *ngFor="let item of dataArray?.propertyDescription?.roomTypeNames"
+            >
+              - {{ item }}
+            </p>
+            <p *ngIf="dataArray?.roomsAndRates?.bookingUrl" class="ms-3">
+              <b>Booking URL: {{ dataArray?.roomsAndRates?.bookingUrl }}</b>
+              <img
+                class="bookingLink"
+                src="https://image.flaticon.com/icons/png/128/126/126481.png"
+              />
+            </p>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="d-flex cont">
-            <div
-              class="card border-light mb-3 info" *ngFor="let item of dataArray?.overview?.overviewSections"
-            >
-              <div class="card-header">{{item.type}}</div>
-              <div class="card-body">
-                <h5 class="card-title">{{item.title}}</h5>
-                <p class="card-text" *ngFor="let feature of item.content" [innerHTML]="feature | htmldecoder">
-                
-                </p>
-              </div>
+          <div
+            class="card border-light mb-3 info"
+            *ngFor="let item of dataArray?.overview?.overviewSections"
+          >
+            <div class="card-header">{{ item.type }}</div>
+            <div class="card-body">
+              <h5 class="card-title">{{ item.title }}</h5>
+              <p
+                class="card-text"
+                *ngFor="let feature of item.content"
+                [innerHTML]="feature | htmldecoder"
+              ></p>
             </div>
           </div>
+        </div>
       </div>
       <!-- end col -->
       <div class="col-lg-4">
@@ -64,14 +115,14 @@
             Reviews({{ reviewsArray ? reviewsArray.length : 0 }})
           </h4>
 
-          
           <div class="media mb-2" *ngFor="let review of reviewsArray">
             <div class="media-body">
               <h5 class="mt-0">
-                {{ review.qualitativeBadgeText }} - {{ review.formattedRating}}
+                {{ review.qualitativeBadgeText }} - {{ review.formattedRating }}
               </h5>
               <p class="font-13 text-muted mb-0">
-                <a href="" class="text-dark">@{{review.recommendedBy}}</a> {{ review.summary }}
+                <a href="" class="text-dark">@{{ review.recommendedBy }}</a>
+                {{ review.summary }}
               </p>
             </div>
           </div>

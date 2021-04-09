@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 import {
   HttpInterceptor,
@@ -7,17 +7,17 @@ import {
   HttpRequest,
   HttpHandler,
 } from '@angular/common/http';
-import { DestinationModule } from 'src/app/destination/destination.module';
+
 
 @Injectable({
-  providedIn:'root',
+  providedIn: 'root',
 })
 export class HeaderInterceptorService implements HttpInterceptor {
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if(request.url.includes("reqres")){
+    if (request.url.includes('reqres')) {
       return next.handle(request);
     }
     const clonedRequest = request.clone({
@@ -28,6 +28,5 @@ export class HeaderInterceptorService implements HttpInterceptor {
       },
     });
     return next.handle(clonedRequest);
-  
   }
 }

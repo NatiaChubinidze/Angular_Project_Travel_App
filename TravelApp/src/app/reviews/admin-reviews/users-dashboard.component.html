@@ -14,8 +14,8 @@
           (click)="onClick(user)"
           [routerLink]="['/feedback']"
         >
-          <td>{{ user.displayName }}</td>
-          <td>{{ user.email }}</td>
+          <td>{{ user.displayName ? user.displayName : "Anonymous" }}</td>
+          <td>{{ user.email ? user.email : "Unknown" }}</td>
           <td>{{ user.uid }}</td>
         </tr>
       </tbody>

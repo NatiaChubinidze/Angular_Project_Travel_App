@@ -6,59 +6,63 @@ import { map } from 'rxjs/operators';
 import firebase from 'firebase/app';
 
 import {
-    TRAVEL_APP_KEY,
-    TRAVEL_TOKEN_EXP_KEY,
+  TRAVEL_APP_KEY,
+  TRAVEL_TOKEN_EXP_KEY,
   TOKEN_TTL,
 } from '../shared/constants';
 import { IUserInfo } from '../shared/interfaces/auth.interface';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class FireBaseAuthService {
   currentUser$ = new Observable<firebase.User | null>();
-  isAdmin:boolean=false;
-  userIsLoggedIn:boolean=false;
+  isAdmin: boolean = false;
+  userIsLoggedIn: boolean = false;
   githubAuth: boolean;
   googleAuth: boolean;
   errorMessage: string;
   constructor(private _router: Router, private auth: AngularFireAuth) {
     this.currentUser$ = this.auth.authState;
   }
-  
-  setTokenValidTime():void{
+
+  setTokenValidTime(): void {
     const date = new Date();
-    date.setMinutes(new Date().getMinutes()+TOKEN_TTL);
-    localStorage.setItem(TRAVEL_TOKEN_EXP_KEY,date.toJSON());
+    date.setMinutes(new Date().getMinutes() + TOKEN_TTL);
+    localStorage.setItem(TRAVEL_TOKEN_EXP_KEY, date.toJSON());
   }
 
-  tokenIsValid():boolean{
+  tokenIsValid(): boolean {
     const timeNow = new Date().getTime();
-    const tokenValidTill=new Date(localStorage.getItem(TRAVEL_TOKEN_EXP_KEY)).getTime();
+    const tokenValidTill = new Date(
+      localStorage.getItem(TRAVEL_TOKEN_EXP_KEY)
+    ).getTime();
     return timeNow < tokenValidTill;
   }
-  
-  authIsSecure():boolean{
-    const timeNow=new Date().getTime();
-    const tokenValidTill=new Date(localStorage.getItem(TRAVEL_TOKEN_EXP_KEY)).getTime();
+
+  authIsSecure(): boolean {
+    const timeNow = new Date().getTime();
+    const tokenValidTill = new Date(
+      localStorage.getItem(TRAVEL_TOKEN_EXP_KEY)
+    ).getTime();
     return tokenValidTill - timeNow > 30000;
+  }
+
+  signOut(): void {
+    this.auth.signOut();
+    if (localStorage.getItem(TRAVEL_APP_KEY)) {
+      localStorage.removeItem(TRAVEL_APP_KEY);
     }
+    if (localStorage.getItem(TRAVEL_TOKEN_EXP_KEY)) {
+      localStorage.removeItem(TRAVEL_TOKEN_EXP_KEY);
+    }
+    this.userIsLoggedIn = false;
+    this._router.navigate(['/signIn']);
+  }
 
-    signOut(): void {
-        console.log('auth sign out firebase');
-        this.auth.signOut();
-        if (localStorage.getItem(TRAVEL_APP_KEY)) {
-          localStorage.removeItem(TRAVEL_APP_KEY);
-        }
-        if (localStorage.getItem(TRAVEL_TOKEN_EXP_KEY)) {
-          localStorage.removeItem(TRAVEL_TOKEN_EXP_KEY);
-        }
-        this.userIsLoggedIn=false;
-        this._router.navigate(['/signIn']);
-      }
-
-  isSignedIn():boolean{
-    if(localStorage.getItem(TRAVEL_APP_KEY)){
+  isSignedIn(): boolean {
+    if (localStorage.getItem(TRAVEL_APP_KEY)) {
       return true;
     } else return false;
   }
@@ -70,7 +74,7 @@ export class FireBaseAuthService {
       .signInWithPopup(new firebase.auth.GithubAuthProvider())
       .then((data: any) => {
         if (data.credential.accessToken) {
-          this.userIsLoggedIn=true;
+          this.userIsLoggedIn = true;
           this._router.navigate(['/home']);
         }
       })
@@ -86,7 +90,7 @@ export class FireBaseAuthService {
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((data: any) => {
         if (data.credential.accessToken) {
-          this.userIsLoggedIn=true;
+          this.userIsLoggedIn = true;
           this._router.navigate(['/home']);
         }
       })
@@ -101,7 +105,7 @@ export class FireBaseAuthService {
       .signInWithPopup(new firebase.auth.FacebookAuthProvider())
       .then((data: any) => {
         if (data.credential.accessToken) {
-          this.userIsLoggedIn=true;
+          this.userIsLoggedIn = true;
           this._router.navigate(['/home']);
         }
       })
@@ -115,13 +119,12 @@ export class FireBaseAuthService {
     this.auth
       .signInWithEmailAndPassword(data.email, data.password)
       .then((userInfo) => {
-        console.log(userInfo);
         if (userInfo.user) {
-          if(userInfo.user.email==="admin@test.com"){
-            this.isAdmin=true;
+          if (userInfo.user.email === 'admin@test.com') {
+            this.isAdmin = true;
           }
-          
-          this.userIsLoggedIn=true;
+
+          this.userIsLoggedIn = true;
           localStorage.setItem(TRAVEL_APP_KEY, userInfo.user.refreshToken);
           this.setTokenValidTime();
           this._router.navigate(['/home']);
@@ -137,9 +140,8 @@ export class FireBaseAuthService {
     this.auth
       .createUserWithEmailAndPassword(userInfo.email, userInfo.password)
       .then((data) => {
-        console.log(data);
         if (data.user) {
-          this.userIsLoggedIn=true;
+          this.userIsLoggedIn = true;
           localStorage.setItem(TRAVEL_APP_KEY, data.user.refreshToken);
           this.setTokenValidTime();
           this._router.navigate(['/home']);

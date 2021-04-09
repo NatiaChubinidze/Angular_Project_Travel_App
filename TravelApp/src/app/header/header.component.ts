@@ -2,8 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
+
 import { FireBaseAuthService } from '../auth/firebase-auth.service';
-import { TOKEN_EXP_TIME, TRAVEL_APP_KEY, TRAVEL_TOKEN_EXP_KEY } from '../shared/constants';
+import {
+  TOKEN_EXP_TIME,
+  TRAVEL_APP_KEY,
+  TRAVEL_TOKEN_EXP_KEY,
+} from '../shared/constants';
+
 
 @Component({
   selector: 'app-header',
@@ -11,16 +17,17 @@ import { TOKEN_EXP_TIME, TRAVEL_APP_KEY, TRAVEL_TOKEN_EXP_KEY } from '../shared/
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
- 
-  constructor(public authService: FireBaseAuthService, private router: Router, 
-    private auth:AngularFireAuth) {}
+  constructor(
+    public authService: FireBaseAuthService,
+    private router: Router,
+    private auth: AngularFireAuth
+  ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem(TRAVEL_APP_KEY)) {
       setInterval(() => {
         if (!this.authService.tokenIsValid()) {
           if (this.authService.googleAuth && this.authService.userIsActive()) {
-            
             firebase
               .auth()
               .currentUser.getIdToken(true)
@@ -42,9 +49,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
-    console.log("sign out");
-    console.log(this.auth.signOut());
     this.authService.signOut();
-    this.authService.isAdmin=false;
+    this.authService.isAdmin = false;
   }
 }

@@ -1,64 +1,74 @@
-
 <div class="container">
-    <div class="col-7 recommendations" *ngIf="feedbackArray">
-        <div class="col-12">
-        <h1 *ngIf="feedbackArray">{{_reviewsService.currentUser.displayName}}'s feedback</h1>
-        </div>
+  <div class="recommendations" *ngIf="feedbackArray">
+    <div class="col-12">
+      <h1 *ngIf="feedbackArray">
+        {{
+          _reviewsService.currentUser.displayName
+            ? _reviewsService.currentUser.displayName
+            : "Anonymous"
+        }}'s feedback
+      </h1>
+    </div>
     <div *ngFor="let feedback of feedbackArray" class="recommendation mb-3">
-        <div class="card mb-3 pt-3">
-            <div class="card-body">
-              <h5 class="card-title">{{ feedback.hotel }} feedback</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{ feedback.opinion }}</h6>
-              <span>
-                <img
-                  [src]="
-                  feedback.rating> 0
-                      ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
-                      : 'https://image.flaticon.com/icons/png/128/616/616821.png'
-                  "
-                  [class.yellow]="feedback.rating>0"/>
-              </span>
-              <span>
-                <img
-                  [src]="
-                  feedback.rating > 1
-                      ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
-                      : 'https://image.flaticon.com/icons/png/128/616/616821.png'
-                  "
-                  [class.yellow]="feedback.rating>1"/>
-              </span>
-              <span>
-                <img
-                  [src]="
-                  feedback.rating > 2
-                      ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
-                      : 'https://image.flaticon.com/icons/png/128/616/616821.png'
-                  "
-                  [class.yellow]="feedback.rating>2"/>
-              </span>
-              <span>
-                <img
-                  [src]="
-                  feedback.rating > 3
-                      ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
-                      : 'https://image.flaticon.com/icons/png/128/616/616821.png'
-                  "
-                [class.yellow]="feedback.rating>3"/>
-              </span>
-              <span>
-                <img
-                  [src]="
-                  feedback.rating > 4
-                      ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
-                      : 'https://image.flaticon.com/icons/png/128/616/616821.png'
-                  "
-                  [class.yellow]="feedback.rating>4"/>
-              </span>
-              <p class="card-text">
-                <i>by {{ feedback.reviewAuthor }}</i>
-              </p>
-            </div>
-          </div>
-          </div>
+      <div class="card mb-3 pt-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ feedback.hotel }} feedback</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ feedback.opinion }}</h6>
+          <span>
+            <img
+              [src]="
+                feedback.rating > 0
+                  ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
+                  : 'https://image.flaticon.com/icons/png/128/616/616821.png'
+              "
+              [class.yellow]="feedback.rating > 0"
+            />
+          </span>
+          <span>
+            <img
+              [src]="
+                feedback.rating > 1
+                  ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
+                  : 'https://image.flaticon.com/icons/png/128/616/616821.png'
+              "
+              [class.yellow]="feedback.rating > 1"
+            />
+          </span>
+          <span>
+            <img
+              [src]="
+                feedback.rating > 2
+                  ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
+                  : 'https://image.flaticon.com/icons/png/128/616/616821.png'
+              "
+              [class.yellow]="feedback.rating > 2"
+            />
+          </span>
+          <span>
+            <img
+              [src]="
+                feedback.rating > 3
+                  ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
+                  : 'https://image.flaticon.com/icons/png/128/616/616821.png'
+              "
+              [class.yellow]="feedback.rating > 3"
+            />
+          </span>
+          <span>
+            <img
+              [src]="
+                feedback.rating > 4
+                  ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
+                  : 'https://image.flaticon.com/icons/png/128/616/616821.png'
+              "
+              [class.yellow]="feedback.rating > 4"
+            />
+          </span>
+          <p class="card-text">
+            <i>by {{ feedback.reviewAuthor }}</i>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
+</div>

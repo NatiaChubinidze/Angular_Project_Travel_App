@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import {AngularFireAuthModule } from '@angular/fire/auth';
-import {NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+
 
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [SignInComponent, SignUpComponent],
@@ -18,19 +20,19 @@ import { CommonModule } from '@angular/common';
     AngularFireAuthModule,
     NgxAuthFirebaseUIModule,
     RouterModule.forChild([
-      { 
-      path: 'signIn', 
-      component: SignInComponent,
-    },
-    { 
-      path: 'signUp', 
-      component: SignUpComponent,
-    },
-    {
-      path:'',
-      redirectTo:'signIn',
-      pathMatch:'full',
-    }
+      {
+        path: 'signIn',
+        component: SignInComponent,
+      },
+      {
+        path: 'signUp',
+        component: SignUpComponent,
+      },
+      {
+        path: '',
+        redirectTo: 'signIn',
+        pathMatch: 'full',
+      },
     ]),
   ],
 })

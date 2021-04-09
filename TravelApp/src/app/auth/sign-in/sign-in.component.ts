@@ -7,7 +7,7 @@ import { FireBaseAuthService } from '../firebase-auth.service';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
   userInfo: IUserInfo = {
@@ -60,12 +60,11 @@ export class SignInComponent implements OnInit {
   logInWithEmail() {
     this.userInfo = this.authForm.value as IUserInfo;
     this.fireBaseAuthService.signInEmail(this.userInfo);
-    console.log(this.userInfo);
   }
   githubSignin() {
     this.fireBaseAuthService.signInGithub();
   }
-  facebookSignin(){
+  facebookSignin() {
     this.fireBaseAuthService.signInFacebook();
   }
 }

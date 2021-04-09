@@ -1,38 +1,45 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, Observer, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
-import { ILocationResponse, IQuery, ISuggestionItem } from '../shared/interfaces/location-response.interface';
-import { IItems, IPropertiesResponse, IResultInterface } from '../shared/interfaces/properties-list-response.interface';
+
+import {
+  ILocationResponse,
+  IQuery,
+  ISuggestionItem,
+} from '../shared/interfaces/location-response.interface';
+import {
+  IItems,
+  IPropertiesResponse,
+  IResultInterface,
+} from '../shared/interfaces/properties-list-response.interface';
 import { IDetailsResponse } from '../shared/interfaces/hotel-details.interface';
 import { IPhotos } from '../shared/interfaces/hotel-Images.interface';
 import { IReviewsResponse } from '../shared/interfaces/reviews.interface';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocationService {
-
   queryData: IQuery = {
     query: '',
     checkIn: '',
     checkOut: '',
   };
-dataIsValid:boolean=false;
+  dataIsValid: boolean = false;
   citiesArray: ISuggestionItem[];
   hotelsArray: IResultInterface[];
-  landmarksArray:IItems[];
+  landmarksArray: IItems[];
   transportsArray: ISuggestionItem[];
 
   cityId: number;
-
-
 
   baseUrl = 'https://hotels4.p.rapidapi.com';
   constructor(private http: HttpClient) {}
 
   getDestinationData(): Observable<ILocationResponse> {
-    console.log("getting destination data");
+    console.log('getting destination data');
     console.log(this.queryData);
     return this.http
       .get<ILocationResponse>(
@@ -49,9 +56,7 @@ dataIsValid:boolean=false;
       .pipe(tap((data) => {}, catchError(this.handleError)));
   }
 
-  getDetailedInfo(
-    hotelId: number
-  ): Observable<IDetailsResponse> {
+  getDetailedInfo(hotelId: number): Observable<IDetailsResponse> {
     return this.http
       .get<IDetailsResponse>(
         `${this.baseUrl}/properties/get-details?id=${hotelId}&locale=en_US&currency=USD&checkOut=${this.queryData.checkOut}&adults1=${this.queryData.adults1}&checkIn=${this.queryData.checkIn}`

@@ -9,29 +9,33 @@ import {
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import {HttpCacheService} from '../core/cache.service';
+import { HttpCacheService } from '../core/cache.service';
 
 @Injectable({
-    providedIn:'root'
+  providedIn: 'root',
 })
-
-export class HttpCacheInterceptorService implements HttpInterceptor{
-    constructor(private _cacheService:HttpCacheService){}
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-        if(req.method!=="GET" || req.url.includes("reqres")){
-            return next.handle(req);
-        }
-        const cachedResponse:HttpResponse<any> |undefined=this._cacheService.get(req.url);
-
-        if(cachedResponse){
-            return of(cachedResponse);
-        }
-        return next.handle(req).pipe(tap((event)=>{
-            if(event instanceof HttpResponse){
-                this._cacheService.put(req.url,event);
-            }
-        }))
+export class HttpCacheInterceptorService implements HttpInterceptor {
+  constructor(private _cacheService: HttpCacheService) {}
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+    if (req.method !== 'GET' || req.url.includes('reqres')) {
+      return next.handle(req);
     }
+    const cachedResponse:
+      | HttpResponse<any>
+      | undefined = this._cacheService.get(req.url);
 
+    if (cachedResponse) {
+      return of(cachedResponse);
+    }
+    return next.handle(req).pipe(
+      tap((event) => {
+        if (event instanceof HttpResponse) {
+          this._cacheService.put(req.url, event);
+        }
+      })
+    );
+  }
 }

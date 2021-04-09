@@ -1,90 +1,96 @@
-
-
-    <!-- Banner Starts Here -->
-    <div class="banner">
-      <div class="cont">
-        <div class="header-text caption">
-          <h2>Choose your destination</h2>
-          <div id="search-section">
-            <form id="suggestion_form" [formGroup]="destinationForm" (ngSubmit)="onSubmit()">
-              <div class="searchText searchArea">
-                <div class="d-flex justify-space-between">
-                <div class="col-5 text-end">
+<!-- Banner Starts Here -->
+<div class="banner">
+  <div class="cont">
+    <div class="header-text caption">
+      <h2>Choose your destination</h2>
+      <div id="search-section">
+        <form
+          id="suggestion_form"
+          [formGroup]="destinationForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <div class="searchText searchArea">
+            <div class="d-flex justify-space-between">
+              <div class="col-5 text-end">
                 <em class="required" *ngIf="destinationIsInvalid()"
-              ><i>Required </i></em></div>
+                  ><i>Required </i></em
+                >
+              </div>
               <div class="col-5 text-end">
                 <em class="required" *ngIf="checkInIsInvalid()"
-              ><i>Required </i></em>
-              </div>
-              </div>
-                <input
-                  type="search"
-                  class="searchText"
-                  placeholder=" Travel Destination"
-                  id="query"
-                  name="query"
-                  formControlName="destination"
-            [ngClass]="{ 'is-invalid': destinationIsInvalid() }"
-                />
-                <input
-                  type="text"
-                  class="searchText"
-                  onfocus="(this.type='date')"
-                  placeholder="Check In Date"
-                  id="checkIn"
-                  name="checkIn"
-                  formControlName="checkIn"
-                  [ngClass]="{ 'is-invalid': checkInIsInvalid() }"
-                />
-                <div class="d-flex justify-space-between">
-                  <div class="col-5 text-end">
-                  <em class="required" *ngIf="checkOutIsInvalid()"
-                ><i>Required </i></em></div>
-                <div class="col-5 text-end">
-                  <em class="required" *ngIf="adultsIsInvalid()"
-                ><i>Required </i></em>
-                </div>
-                </div>
-                <input
-                  type="text"
-                  class="searchText"
-                  onfocus="(this.type='date')"
-                  placeholder="Check Out Date"
-                  id="checkOut"
-                  name="checkOut"
-                  formControlName="checkOut"
-            [ngClass]="{ 'is-invalid': checkOutIsInvalid() }"
-                />
-                <input
-                  type="text"
-                  class="searchText"
-                  onfocus="(this.type='number')"
-                  placeholder="Number of Adults"
-                  id="adults"
-                  name="adults"
-                  formControlName="adults"
-            [ngClass]="{ 'is-invalid': adultsIsInvalid() }"
-                />
-                <br>
-                <div class="col-3 mx-auto pe-4 ps-0"
-                (mouseenter)="buttonHover = true"
-                (mouseleave)="buttonHover = false">
-                <button
-                  type="submit"
-                  class="main-button"
-                  [disabled]="destinationForm.invalid"
-                  [routerLink]="['/transport']"
+                  ><i>Required </i></em
                 >
-                  Search Now
-                </button>
-                </div>
               </div>
-            </form>
+            </div>
+            <input
+              type="search"
+              class="searchText"
+              placeholder=" Travel Destination"
+              id="query"
+              name="query"
+              formControlName="destination"
+              [ngClass]="{ 'is-invalid': destinationIsInvalid() }"
+            />
+            <input
+              type="text"
+              class="searchText"
+              onfocus="(this.type='date')"
+              placeholder="Check In Date"
+              id="checkIn"
+              name="checkIn"
+              formControlName="checkIn"
+              [ngClass]="{ 'is-invalid': checkInIsInvalid() }"
+            />
+            <div class="d-flex justify-space-between warning-text">
+              <div class="col-5 text-end">
+                <em class="required" *ngIf="checkOutIsInvalid()"
+                  ><i>Required </i></em
+                >
+              </div>
+              <div class="col-5 text-end">
+                <em class="required" *ngIf="adultsIsInvalid()"
+                  ><i>Required </i></em
+                >
+              </div>
+            </div>
+            <input
+              type="text"
+              class="searchText"
+              onfocus="(this.type='date')"
+              placeholder="Check Out Date"
+              id="checkOut"
+              name="checkOut"
+              formControlName="checkOut"
+              [ngClass]="{ 'is-invalid': checkOutIsInvalid() }"
+            />
+            <input
+              type="text"
+              class="searchText"
+              onfocus="(this.type='number')"
+              placeholder="Number of Adults"
+              id="adults"
+              name="adults"
+              formControlName="adults"
+              [ngClass]="{ 'is-invalid': adultsIsInvalid() }"
+            />
+            <br />
+            <div
+              class="col-3 mx-auto pe-4 ps-0"
+              (mouseenter)="buttonHover = true"
+              (mouseleave)="buttonHover = false"
+            >
+              <button
+                type="submit"
+                class="main-button"
+                [disabled]="destinationForm.invalid"
+              >
+                Search Now
+              </button>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
-    {{getLocation.queryData |json}}
-    <!-- Banner Ends Here -->
-
-    
+  </div>
+</div>
+<!-- Banner Ends Here -->

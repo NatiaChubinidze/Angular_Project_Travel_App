@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IItems } from 'src/app/shared/interfaces/properties-list-response.interface';
 
+import { IItems } from 'src/app/shared/interfaces/properties-list-response.interface';
 import { LocationService } from '../location.service';
 
 @Component({
@@ -31,7 +31,6 @@ export class LandmarksComponent implements OnInit {
   ngOnInit(): void {}
 
   handleChange() {
-    console.log('on change');
     if (this.counter === 0) {
       this.clonedLandmarks = this.landmarks.slice();
       this.counter++;

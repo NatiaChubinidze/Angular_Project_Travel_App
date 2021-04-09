@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="hotelsArray.length > 0">
   <h1 class="text-center mb-4">{{ destination | capitalize }} Hotels</h1>
   <div class="d-flex settings">
     <div class="col-4 d-inline-block mb-3">
@@ -10,6 +10,10 @@
         (ngModelChange)="handleChange()"
       />
     </div>
+    <img
+      class="search-icon"
+      src="https://image.flaticon.com/icons/png/128/107/107122.png"
+    />
     <div class="col-3">
       <form [formGroup]="ratingForm">
         <label for="stars">Filter Hotels By Stars</label>
@@ -22,10 +26,10 @@
         >
           <option value=""></option>
           <option value="1">1 star</option>
-          <option value="2">2 stars</option>
-          <option value="3">3 stars</option>
-          <option value="4">4 stars</option>
-          <option value="5">5 stars</option>
+          <option value="2">2 star</option>
+          <option value="3">3 star</option>
+          <option value="4">4 star</option>
+          <option value="5">5 star</option>
         </select>
       </form>
     </div>
@@ -67,7 +71,8 @@
                   ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
                   : 'https://image.flaticon.com/icons/png/128/616/616821.png'
               "
-              [class.yellow]="hotel.starRating>0"/>
+              [class.yellow]="hotel.starRating > 0"
+            />
           </span>
           <span>
             <img
@@ -76,7 +81,8 @@
                   ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
                   : 'https://image.flaticon.com/icons/png/128/616/616821.png'
               "
-              [class.yellow]="hotel.starRating>1"/>
+              [class.yellow]="hotel.starRating > 1"
+            />
           </span>
           <span>
             <img
@@ -85,7 +91,8 @@
                   ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
                   : 'https://image.flaticon.com/icons/png/128/616/616821.png'
               "
-              [class.yellow]="hotel.starRating>2"/>
+              [class.yellow]="hotel.starRating > 2"
+            />
           </span>
           <span>
             <img
@@ -94,7 +101,8 @@
                   ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
                   : 'https://image.flaticon.com/icons/png/128/616/616821.png'
               "
-            [class.yellow]="hotel.starRating>3"/>
+              [class.yellow]="hotel.starRating > 3"
+            />
           </span>
           <span>
             <img
@@ -103,10 +111,14 @@
                   ? 'https://image.flaticon.com/icons/png/128/616/616489.png'
                   : 'https://image.flaticon.com/icons/png/128/616/616821.png'
               "
-              [class.yellow]="hotel.starRating>4"/>
+              [class.yellow]="hotel.starRating > 4"
+            />
           </span>
         </div>
       </div>
     </div>
   </div>
+</div>
+<div *ngIf="hotelsArray.length === 0">
+  <app-no-data></app-no-data>
 </div>

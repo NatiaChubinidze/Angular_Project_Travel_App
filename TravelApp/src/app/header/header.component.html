@@ -1,51 +1,104 @@
-
-    <!-- Header -->
-    <header class="body">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container">
-            <a class="navbar-brand" [routerLink]="['/home']"
-              ><h2>Travel <em>App</em></h2></a
+<!-- Header -->
+<header class="body">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/home']"
+        ><h2>Travel <em>App</em></h2></a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarResponsive"
+        aria-controls="navbarResponsive"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" *ngIf="!authService.userIsLoggedIn">
+            <a class="nav-link infoText"
+              >Get Information About Landmarks, Transport and Hotels</a
             >
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarResponsive"
-              aria-controls="navbarResponsive"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+          </li>
+          <li class="nav-item" *ngIf="authService.userIsLoggedIn">
+            <a
+              class="nav-link"
+              [routerLink]="['/transport']"
+              routerLinkActive="active"
+              >Transport</a
             >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item" *ngIf="!(authService.userIsLoggedIn)">
-                  <a class="nav-link infoText">Get Information About Landmarks, Transport and Hotels</a>
-                </li>
-                <li class="nav-item" *ngIf="authService.userIsLoggedIn">
-                  <a class="nav-link" [routerLink]="['/transport']" routerLinkActive="active">Transport</a>
-                </li>
-                <li class="nav-item" *ngIf="authService.userIsLoggedIn">
-                  <a class="nav-link" [routerLink]="['/landmarks']" routerLinkActive="active">Landmarks</a>
-                </li>
-                <li class="nav-item" *ngIf="authService.userIsLoggedIn">
-                  <a class="nav-link" [routerLink]="['/hotels']" routerLinkActive="active">Hotels</a>
-                </li>
-                <li class="nav-item" *ngIf="authService.userIsLoggedIn && !authService.isAdmin">
-                  <a class="nav-link" [routerLink]="['/myReviews']" routerLinkActive="active">My Reviews</a>
-                </li>
-                <li class="nav-item" *ngIf="authService.userIsLoggedIn && authService.isAdmin">
-                  <a class="nav-link" [routerLink]="['/reviews']" routerLinkActive="active">Users' Reviews</a>
-                </li>
-              </ul>
-            </div>
-            <div class="functional-buttons">
-              <ul>
-                <li><a *ngIf="authService.userIsLoggedIn" (click)="logOut()" class="logOut">Log Out</a></li>
-                <li><a *ngIf="!(authService.userIsLoggedIn)"[routerLink]="['/signIn']" routerLinkActive="active">Sign In</a></li>
-                <li><a *ngIf="!(authService.userIsLoggedIn)"[routerLink]="['/signUp']" routerLinkActive="active">Sign Up</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
+          </li>
+          <li class="nav-item" *ngIf="authService.userIsLoggedIn">
+            <a
+              class="nav-link"
+              [routerLink]="['/landmarks']"
+              routerLinkActive="active"
+              >Landmarks</a
+            >
+          </li>
+          <li class="nav-item" *ngIf="authService.userIsLoggedIn">
+            <a
+              class="nav-link"
+              [routerLink]="['/hotels']"
+              routerLinkActive="active"
+              >Hotels</a
+            >
+          </li>
+          <li
+            class="nav-item"
+            *ngIf="authService.userIsLoggedIn && !authService.isAdmin"
+          >
+            <a
+              class="nav-link"
+              [routerLink]="['/myReviews']"
+              routerLinkActive="active"
+              >My Reviews</a
+            >
+          </li>
+          <li
+            class="nav-item"
+            *ngIf="authService.userIsLoggedIn && authService.isAdmin"
+          >
+            <a
+              class="nav-link"
+              [routerLink]="['/reviews']"
+              routerLinkActive="active"
+              >Reviews</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="functional-buttons">
+        <ul>
+          <li>
+            <a
+              *ngIf="authService.userIsLoggedIn"
+              (click)="logOut()"
+              class="logOut"
+              >Log Out</a
+            >
+          </li>
+          <li>
+            <a
+              *ngIf="!authService.userIsLoggedIn"
+              [routerLink]="['/signIn']"
+              routerLinkActive="active"
+              >Sign In</a
+            >
+          </li>
+          <li>
+            <a
+              *ngIf="!authService.userIsLoggedIn"
+              [routerLink]="['/signUp']"
+              routerLinkActive="active"
+              >Sign Up</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

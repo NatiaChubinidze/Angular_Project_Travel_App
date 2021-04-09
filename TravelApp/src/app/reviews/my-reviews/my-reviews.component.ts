@@ -2,7 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, throwError } from 'rxjs';
-import { catchError, finalize } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+
 import { ReviewsService } from '../reviews.service';
 import { IUserReview } from 'src/app/shared/interfaces/user-review.interface';
 import { FireBaseAuthService } from 'src/app/auth/firebase-auth.service';
@@ -14,25 +15,25 @@ import { FireBaseAuthService } from 'src/app/auth/firebase-auth.service';
 })
 export class MyReviewsComponent implements OnInit {
   reviewsArray: IUserReview[] = [];
-  usersArray:any[]=[];
+  usersArray: any[] = [];
   currentReview: IUserReview = {
     uid: '',
     email: '',
     reviewAuthor: '',
     opinion: '',
-    hotel:'',
+    hotel: '',
     rating: 0,
   };
-  currentUser={
-    displayName:'',
-    email:'',
-    uid:''
-  }
+  currentUser = {
+    displayName: '',
+    email: '',
+    uid: '',
+  };
 
   value: Observable<number>;
 
   opinion: FormControl;
-  hotel:FormControl;
+  hotel: FormControl;
   rating: FormControl;
   feedbackForm: FormGroup;
 
@@ -44,10 +45,10 @@ export class MyReviewsComponent implements OnInit {
     public _reviewsService: ReviewsService
   ) {
     this._firebaseAuth.currentUser$.subscribe((data) => {
-      this.currentUser.uid=this.currentReview.uid = data.uid;
-      this.currentUser.email=this.currentReview.email = data.email;
-      this.currentUser.displayName=this.currentReview.reviewAuthor = data.displayName;
-      
+      this.currentUser.uid = this.currentReview.uid = data.uid;
+      this.currentUser.email = this.currentReview.email = data.email;
+      this.currentUser.displayName = this.currentReview.reviewAuthor =
+        data.displayName;
     });
 
     this.opinion = new FormControl(
@@ -59,14 +60,14 @@ export class MyReviewsComponent implements OnInit {
       Validators.compose([Validators.required])
     );
 
-    this.hotel= new FormControl(
+    this.hotel = new FormControl(
       null,
       Validators.compose([Validators.required])
     );
     this.feedbackForm = new FormGroup({
       opinion: this.opinion,
       rating: this.rating,
-      hotel:this.hotel,
+      hotel: this.hotel,
     });
   }
 
@@ -74,9 +75,9 @@ export class MyReviewsComponent implements OnInit {
     return this.opinion.invalid && (this.opinion.touched || this.buttonHover);
   }
   ratingIsInvalid(): boolean {
-    return this.rating.invalid && (this.rating.touched || this.buttonHover);
+    return this.rating.invalid && this.buttonHover;
   }
-  hotelIsInvalid():boolean{
+  hotelIsInvalid(): boolean {
     return this.hotel.invalid && (this.hotel.touched || this.buttonHover);
   }
 
@@ -95,7 +96,7 @@ export class MyReviewsComponent implements OnInit {
         );
       });
 
-      this._reviewsService
+    this._reviewsService
       .getCollection('users')
       .pipe(catchError(this.handleError))
       .subscribe((users) => {
@@ -119,19 +120,19 @@ export class MyReviewsComponent implements OnInit {
   }
 
   onSubmit(event: any) {
-    let newUser:boolean=false;
-    this.usersArray.forEach(item=>{
-      if(item.uid===this.currentUser.uid){
-        newUser=true;
+    let newUser: boolean = true;
+    this.usersArray.forEach((user) => {
+      if (user.uid === this.currentUser.uid) {
+        newUser = false;
       }
-    })
-    if(newUser){
+    });
+    if (newUser) {
       this._reviewsService.saveUserInfo('users', this.currentUser);
     }
-    console.log(this.feedbackForm.value);
+
     this.currentReview.rating = this.rating.value;
     this.currentReview.opinion = this.opinion.value;
-    this.currentReview.hotel=this.hotel.value;
+    this.currentReview.hotel = this.hotel.value;
     if (this.editMode) {
       this.saveEdit();
       this.editMode = false;
@@ -140,7 +141,6 @@ export class MyReviewsComponent implements OnInit {
       this.reviewsArray.push(this.currentReview);
     }
     this.resetForm();
-    console.log(this.reviewsArray);
   }
 
   saveEdit() {
@@ -156,12 +156,13 @@ export class MyReviewsComponent implements OnInit {
   }
 
   resetForm() {
-    console.log("resetting");
+    console.log('resetting');
     this.currentReview.opinion = '';
     this.currentReview.rating = 0;
     this.rating.setValue(0);
     this.opinion.setValue('');
     this.hotel.setValue('');
+    this.feedbackForm.reset();
   }
 
   private handleError(error: HttpErrorResponse) {
