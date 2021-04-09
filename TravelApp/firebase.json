@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/TravelApp",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
