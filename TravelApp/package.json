@@ -30,6 +30,7 @@
     "angular-star-rating": "^4.0.0-beta.3",
     "bootstrap": "^5.0.0-beta2",
     "firebase": "^8.3.2",
+    "firebase-tools": "^9.9.0",
     "font-awesome": "^4.7.0",
     "ng-starrating": "^1.0.20",
     "ngx-auth-firebaseui": "^5.2.0",

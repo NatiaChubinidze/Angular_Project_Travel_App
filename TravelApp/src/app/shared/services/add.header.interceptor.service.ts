@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import {
   HttpInterceptor,
   HttpEvent,
@@ -8,6 +7,7 @@ import {
   HttpHandler,
 } from '@angular/common/http';
 
+import {key} from 'src/rapid-api-key';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +23,7 @@ export class HeaderInterceptorService implements HttpInterceptor {
     const clonedRequest = request.clone({
       method: 'GET',
       setHeaders: {
-        'x-rapidapi-key': '218a3bc526msh45af1c5ed29b081p16aaeajsn2ee62334378d',
+        'x-rapidapi-key': key,
         'x-rapidapi-host': 'hotels4.p.rapidapi.com',
       },
     });
