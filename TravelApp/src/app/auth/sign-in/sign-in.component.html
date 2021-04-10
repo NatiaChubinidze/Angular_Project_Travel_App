@@ -28,6 +28,7 @@
               placeholder="username"
               formControlName="email"
               [ngClass]="{ 'is-invalid': emailIsInvalid() }"
+              autocomplete="off"
             />
             <div class="patternText">
               <em class="required" *ngIf="passwordIsInvalid()"
@@ -43,6 +44,7 @@
               placeholder="password"
               formControlName="password"
               [ngClass]="{ 'is-invalid': passwordIsInvalid() }"
+              autocomplete="off"
             />
 
             <div class="wrapper">

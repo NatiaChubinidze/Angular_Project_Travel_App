@@ -1,10 +1,16 @@
 {
   "hosting": {
-    "public": "dist/TravelApp",
+    "public": "./dist/TravelApp",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }

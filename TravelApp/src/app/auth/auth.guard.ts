@@ -29,6 +29,6 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.firebaseAuth.userIsLoggedIn;
+    return this.firebaseAuth.userIsLoggedIn && this.locationService.dataIsValid;
   }
 }
