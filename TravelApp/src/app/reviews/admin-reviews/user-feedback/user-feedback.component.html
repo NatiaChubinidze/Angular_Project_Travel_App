@@ -64,7 +64,7 @@
               [class.yellow]="feedback.rating > 4"
             />
           </span>
-          <p class="card-text">
+          <p class="card-text" *ngIf="feedback.reviewAuthor">
             <i>by {{ feedback.reviewAuthor }}</i>
           </p>
         </div>
